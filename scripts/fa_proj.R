@@ -115,7 +115,6 @@ efa13.oblimin
 #Assign a to 1
 
 a=1
-b=2
 
 #Assign c to 3
 
