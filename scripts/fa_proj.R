@@ -112,6 +112,8 @@ efa12.oblimin
 efa13.oblimin <- factanal(factors=13,covmat=cormat,n.obs=195,rotation="oblimin") 
 efa13.oblimin
 
+#Assign a to 1
 
+a=1
 
 
