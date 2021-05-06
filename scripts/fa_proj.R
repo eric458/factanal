@@ -13,6 +13,7 @@ library(psych)
 library(knitr)
 library(GPArotation)
 library(tidyverse)
+library(qgraph)
 
 ##############################
 ## directory paths
@@ -52,17 +53,23 @@ for (i in 1:length(hipic_data)) {
 
 
 ################################
-#Read in Correlation Matrix
+#Correlation Matrices
 ################################
 
 cormat <- cor(hipic_data, method = c("pearson"), use = "complete.obs")
 
+polycormat <- polychoric(hipic_data)
+
+rho <- polycormat$rho
+
 
 ################################
-#Parallel Analysis
+#Parallel Analyses
 ################################
 
 fa.parallel(cormat, n.obs=195, fm="ml", fa="fa")
+
+fa.parallel(rho, n.obs=195, fm="ml", fa="fa")
 
 
 #########################################
@@ -114,4 +121,3 @@ efa13.oblimin
 
 
 
-efa13.oblimin$loadings
