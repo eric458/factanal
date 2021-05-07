@@ -124,3 +124,4 @@ efa13.oblimin
 efa13.oblimin.rho <- factanal(factors=13,covmat=rho,n.obs=195,rotation="oblimin") 
 efa13.oblimin.rho
 
+practice
