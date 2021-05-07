@@ -111,6 +111,8 @@ efa11.oblimin
 efa12.oblimin <- factanal(factors=12,covmat=cormat,n.obs=195,rotation="oblimin") 
 efa12.oblimin
 
+efa12.oblimin.rho <- factanal(factors=12,covmat=rho,n.obs=195,rotation="oblimin") 
+efa12.oblimin.rho
 
 #########################################
 #13 Factor Model with Oblimin Rotation
@@ -119,5 +121,6 @@ efa12.oblimin
 efa13.oblimin <- factanal(factors=13,covmat=cormat,n.obs=195,rotation="oblimin") 
 efa13.oblimin
 
-
+efa13.oblimin.rho <- factanal(factors=13,covmat=rho,n.obs=195,rotation="oblimin") 
+efa13.oblimin.rho
 
