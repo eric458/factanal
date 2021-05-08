@@ -14,6 +14,7 @@ library(knitr)
 library(GPArotation)
 library(tidyverse)
 library(qgraph)
+library(polycor)
 
 ##############################
 ## directory paths
@@ -56,11 +57,33 @@ for (i in 1:length(hipic_data)) {
 #Correlation Matrices
 ################################
 
+#Pearson
 cormat <- cor(hipic_data, method = c("pearson"), use = "complete.obs")
 
+#Polychoric Using Psych Package
 polycormat <- polychoric(hipic_data)
 
 rho <- polycormat$rho
+
+#Polychoric Using Polycor Package
+
+#Note: I get an error from following code using the polycor package ==>  polycormat2 <- polychor(hipic_data, ML=TRUE)
+
+
+#Subset of Extraversion Items
+rho.extra <- rho[1:32, 1:32]
+
+#Subset of Agreeableness (Benevolence) Items
+rho.agree <- rho[33:72, 33:72]
+
+#Subset of Conscientiousness Items
+rho.con <- rho[73:104, 73:104]
+
+#Subset of Neuroticism Items
+rho.neuro <- rho[105:120, 105:120]
+
+#Subset of Openness (Imagination) Items
+rho.open <- rho[121:144, 121:144]
 
 
 ################################
@@ -71,6 +94,15 @@ fa.parallel(cormat, n.obs=195, fm="ml", fa="fa")
 
 fa.parallel(rho, n.obs=195, fm="ml", fa="fa")
 
+fa.parallel(rho.extra, n.obs=195, fm="ml", fa="fa")
+
+fa.parallel(rho.agree, n.obs=195, fm="ml", fa="fa")
+
+fa.parallel(rho.con, n.obs=195, fm="ml", fa="fa")
+
+fa.parallel(rho.neuro, n.obs=195, fm="ml", fa="fa")
+
+fa.parallel(rho.open, n.obs=195, fm="ml", fa="fa")
 
 #########################################
 #4 Factor Model with Oblimin Rotation
@@ -124,4 +156,3 @@ efa13.oblimin
 efa13.oblimin.rho <- factanal(factors=13,covmat=rho,n.obs=195,rotation="oblimin") 
 efa13.oblimin.rho
 
-practice
