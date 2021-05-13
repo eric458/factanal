@@ -156,3 +156,29 @@ efa13.oblimin
 efa13.oblimin.rho <- factanal(factors=13,covmat=rho,n.obs=195,rotation="oblimin") 
 efa13.oblimin.rho
 
+
+#########################################
+#Neuroticism -- 5 Factor Model
+#########################################
+
+efa5.neuro.oblimin <- factanal(factors=5,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
+efa5.neuro.oblimin
+
+
+#########################################
+#Neuroticism -- 2 Factor Model
+#########################################
+
+efa2.neuro.oblimin <- factanal(factors=2,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
+efa2.neuro.oblimin
+
+
+
+
+
+
+
+
+
+
+
