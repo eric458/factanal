@@ -95,14 +95,29 @@ fa.parallel(cormat, n.obs=195, fm="ml", fa="fa")
 fa.parallel(rho, n.obs=195, fm="ml", fa="fa")
 
 fa.parallel(rho.extra, n.obs=195, fm="ml", fa="fa")
+#Literature: 4 factors
+#Parallel Analysis: 6 factors
+#Eigenvalues above One: 4 factors
 
 fa.parallel(rho.agree, n.obs=195, fm="ml", fa="fa")
+#Literature: 5 factors
+#Parallel Analysis: 6 factors
+#Eigenvalues above One: 4 factors
 
 fa.parallel(rho.con, n.obs=195, fm="ml", fa="fa")
+#Literature: 4 factors
+#Parallel Analysis: 6 factors
+#Eigenvalues above One: 4 factors
 
 fa.parallel(rho.neuro, n.obs=195, fm="ml", fa="fa")
+#Literature: 2 factors
+#Parallel Analysis: 5 factors
+#Eigenvalues above One: 2 factors
 
 fa.parallel(rho.open, n.obs=195, fm="ml", fa="fa")
+#Literature: 3 factors
+#Parallel Analysis: 5 factors
+#Eigenvalues above One: 3 factors
 
 #########################################
 #4 Factor Model with Oblimin Rotation
@@ -158,23 +173,91 @@ efa13.oblimin.rho
 
 
 #########################################
+#Extraversion -- 4 Factor Model
+#########################################
+
+efa4.extra <- factanal(factors=4,covmat=rho.extra,n.obs=195,rotation="oblimin") 
+efa4.extra
+
+
+#########################################
+#Extraversion -- 6 Factor Model
+#########################################
+
+efa6.extra <- factanal(factors=6,covmat=rho.extra,n.obs=195,rotation="oblimin") 
+efa6.extra
+
+
+#########################################
+#Agreeableness -- 5 Factor Model
+#########################################
+
+efa5.agree <- factanal(factors=5,covmat=rho.agree,n.obs=195,rotation="oblimin") 
+efa5.agree
+
+
+#########################################
+#Agreeableness -- 6 Factor Model
+#########################################
+
+efa6.agree <- factanal(factors=6,covmat=rho.agree,n.obs=195,rotation="oblimin") 
+efa6.agree
+
+
+#########################################
+#Agreeableness -- 4 Factor Model
+#########################################
+
+efa4.agree <- factanal(factors=4,covmat=rho.agree,n.obs=195,rotation="oblimin") 
+efa4.agree
+
+
+#########################################
+#Conscientiousness -- 4 Factor Model
+#########################################
+
+efa4.con <- factanal(factors=4,covmat=rho.con,n.obs=195,rotation="oblimin") 
+efa4.con
+
+
+#########################################
+#Conscientiousness -- 6 Factor Model
+#########################################
+
+efa6.con <- factanal(factors=6,covmat=rho.con,n.obs=195,rotation="oblimin") 
+efa6.con
+
+
+#########################################
 #Neuroticism -- 5 Factor Model
 #########################################
 
-efa5.neuro.oblimin <- factanal(factors=5,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
-efa5.neuro.oblimin
+efa5.neuro <- factanal(factors=5,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
+efa5.neuro
 
 
 #########################################
 #Neuroticism -- 2 Factor Model
 #########################################
 
-efa2.neuro.oblimin <- factanal(factors=2,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
-efa2.neuro.oblimin
+efa2.neuro <- factanal(factors=2,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
+efa2.neuro
 
 
+#########################################
+#Openness -- 5 Factor Model
+#########################################
+
+efa5.open <- factanal(factors=5,covmat=rho.open,n.obs=195,rotation="oblimin") 
+efa5.open
 
 
+#########################################
+#Openness -- 3 Factor Model
+#########################################
+
+efa3.open <- factanal(factors=3,covmat=rho.open,n.obs=195,rotation="oblimin") 
+efa3.open
 
 
 
