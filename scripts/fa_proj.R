@@ -26,6 +26,9 @@ library(polycor)
 ## Read in Data
 ##############################
 
+#Read in the data - Jeffrey
+#hipic_data <- read_xlsx("C:/Users/yjeff/Box/255C Final Project/HiPIC raw data.xlsx")
+
 hipic_data <- read_xlsx("HiPIC raw data.xlsx")
 hipic_data <- subset(hipic_data, select=-FAMILYID)
 
