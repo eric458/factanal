@@ -245,6 +245,14 @@ efa2.neuro
 
 
 #########################################
+#Neuroticism -- 4 Factor Model
+#########################################
+
+efa4.neuro <- factanal(factors=4,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
+efa4.neuro
+
+
+#########################################
 #Openness -- 5 Factor Model
 #########################################
 
