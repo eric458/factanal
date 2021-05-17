@@ -246,6 +246,15 @@ efa5.neuro
 
 
 #########################################
+#Neuroticism -- 5 Factor Model -- Uncorrelated
+#########################################
+
+efa5.neuro.var <- factanal(factors=5,covmat=rho.neuro,n.obs=195,rotation="varimax") 
+efa5.neuro.var
+
+
+
+#########################################
 #Neuroticism -- 2 Factor Model
 #########################################
 
