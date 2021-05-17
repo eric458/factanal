@@ -91,6 +91,18 @@ rho.con <- rho[73:104, 73:104]
 #Subset of Neuroticism Items
 rho.neuro <- rho[105:120, 105:120]
 
+rho.neuro.111 <- subset(rho.neuro, select=-PRE_PARENT_HIPIC_111)
+rho.neuro.111 <- t(rho.neuro.111)
+rho.neuro.111 <- subset(rho.neuro.111, select=-PRE_PARENT_HIPIC_111)
+
+rho.neuro.114 <- subset(rho.neuro, select=-PRE_PARENT_HIPIC_114)
+rho.neuro.114 <- t(rho.neuro.114)
+rho.neuro.114 <- subset(rho.neuro.114, select=-PRE_PARENT_HIPIC_114)
+
+rho.neuro.114111 <- subset(rho.neuro, select=-c(PRE_PARENT_HIPIC_114,PRE_PARENT_HIPIC_111))
+rho.neuro.114111 <- t(rho.neuro.114111)
+rho.neuro.114111 <- subset(rho.neuro.114111, select=-c(PRE_PARENT_HIPIC_114,PRE_PARENT_HIPIC_111))
+
 #Subset of Openness (Imagination) Items
 rho.open <- rho[121:144, 121:144]
 
@@ -119,6 +131,11 @@ fa.parallel(rho.con, n.obs=195, fm="ml", fa="fa")
 #Eigenvalues above One: 4 factors
 
 fa.parallel(rho.neuro, n.obs=195, fm="ml", fa="fa")
+#Literature: 2 factors
+#Parallel Analysis: 5 factors
+#Eigenvalues above One: 2 factors
+
+fa.parallel(rho.neuro.114, n.obs=195, fm="ml", fa="fa")
 #Literature: 2 factors
 #Parallel Analysis: 5 factors
 #Eigenvalues above One: 2 factors
@@ -252,6 +269,27 @@ efa5.neuro
 efa5.neuro.var <- factanal(factors=5,covmat=rho.neuro,n.obs=195,rotation="varimax") 
 efa5.neuro.var
 
+
+#########################################
+#Neuroticism -- 5 Factor Model -- Item 111 Removed
+#########################################
+
+efa5.neuro.111 <- factanal(factors=5,covmat=rho.neuro.111,n.obs=195,rotation="oblimin") 
+efa5.neuro.111
+
+#########################################
+#Neuroticism -- 5 Factor Model -- Item 114 Removed
+#########################################
+
+efa5.neuro.114 <- factanal(factors=5,covmat=rho.neuro.114,n.obs=195,rotation="oblimin") 
+efa5.neuro.114
+
+#########################################
+#Neuroticism -- 5 Factor Model -- Items 114 and 111 Removed
+#########################################
+
+efa5.neuro.114111 <- factanal(factors=4,covmat=rho.neuro.114111,n.obs=195,rotation="oblimin") 
+efa5.neuro.114111
 
 
 #########################################
