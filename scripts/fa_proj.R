@@ -285,11 +285,11 @@ efa5.neuro.114 <- factanal(factors=5,covmat=rho.neuro.114,n.obs=195,rotation="ob
 efa5.neuro.114
 
 #########################################
-#Neuroticism -- 5 Factor Model -- Items 114 and 111 Removed
+#Neuroticism -- 4 Factor Model -- Items 114 and 111 Removed
 #########################################
 
-efa5.neuro.114111 <- factanal(factors=4,covmat=rho.neuro.114111,n.obs=195,rotation="oblimin") 
-efa5.neuro.114111
+efa4.neuro.114111 <- factanal(factors=4,covmat=rho.neuro.114111,n.obs=195,rotation="oblimin") 
+efa4.neuro.114111
 
 
 #########################################
