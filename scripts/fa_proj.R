@@ -15,6 +15,7 @@ library(GPArotation)
 library(tidyverse)
 library(qgraph)
 library(polycor)
+library(lavaan)
 
 ##############################
 ## directory paths
