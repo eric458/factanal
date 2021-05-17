@@ -141,6 +141,11 @@ fa.parallel(rho.neuro.114, n.obs=195, fm="ml", fa="fa")
 #Parallel Analysis: 5 factors
 #Eigenvalues above One: 2 factors
 
+fa.parallel(rho.neuro.114111, n.obs=195, fm="ml", fa="fa")
+#Literature: 2 factors
+#Parallel Analysis: 5 factors
+#Eigenvalues above One: 2 factors
+
 fa.parallel(rho.open, n.obs=195, fm="ml", fa="fa")
 #Literature: 3 factors
 #Parallel Analysis: 5 factors
