@@ -6,6 +6,7 @@ output: html_document
 ---
 Key - *item* will be recoded
 
+# Extraversion
 1  talks to people easily 
 *2  has difficulty making new friends *
 3  immediately feels at home in new places 
@@ -38,6 +39,8 @@ Key - *item* will be recoded
 30  finds it hard to sit still 
 31  looks for adventure 
 32  likes to let his/her hair down 
+
+# Agreeableness
 33  quick to have feelings hurt 
 34  adapts to others wishes 
 35  takes him/herself into consideration first 
@@ -78,6 +81,8 @@ Key - *item* will be recoded
 70  shows concern for other children 
 71  gives to others 
 72  takes others into account 
+
+# Conscientiousness
 73  wants to be among the best 
 74  always does his/her best 
 75  strives for perfection 
@@ -110,6 +115,8 @@ Key - *item* will be recoded
 102  is quickly satisfied with own efforts 
 103  perseveres until the goal is achieved 
 104  soon gives up when something gets too hard 
+
+# Neuroticism
 105  quick to panic 
 106  is afraid of failure 
 107  is quick to worry about things 
@@ -127,6 +134,8 @@ Key - *item* will be recoded
 119  feels at ease with him/herself 
 120  easily makes decisions 
 121  has little imagination 
+
+# Openness
 122  can use everyday things in a new way 
 123  lacks creativity 
 124  derives pleasure from creating things 
