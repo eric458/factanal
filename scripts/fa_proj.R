@@ -343,7 +343,7 @@ efa4.agree
 #Conscientiousness -- 4 Factor Model
 #########################################
 
-efa4.con <- factanal(factors=4,covmat=rho.con,n.obs=195,rotation="oblimin") 
+efa4.con <- factanal(factors=4,covmat=rho.con,n.obs=195,rotation="oblimin")
 efa4.con
 
 
@@ -423,10 +423,4 @@ efa5.open
 
 efa3.open <- factanal(factors=3,covmat=rho.open,n.obs=195,rotation="oblimin") 
 efa3.open
-
-
-
-
-
-
 
