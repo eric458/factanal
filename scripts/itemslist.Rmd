@@ -6,19 +6,33 @@ output: html_document
 ---
 Key - *item* will be recoded
 
+RECODE (36 variables total)
+ E_shy_1p E_shy_3p E_shy_4p E_exp_3p E_exp_4p E_ene_5p (6)
+ 
+ A_ego_2p A_ego_7p A_irr_5p A_com_5p A_com_7p A_com_8p A_dom_1p A_dom_7p (8) 
+ 
+ C_ach_8p C_ord_1p C_ord_3p C_ord_4p C_ord_5p C_con_3p C_con_6p C_con_7p (8)
+ C_con_8p C_per_1p C_per_2p C_per_3p C_per_5p C_per_6p C_per_8p (7)
+ 
+ S_sel_2p S_sel_4p S_sel_6p (3)
+ 
+ I_cre_1p I_cre_3p I_int_3p I_int_7p (4)  
+ (1=5)  (2=4)  (3=3)  (4=2)  (5=1).
+ EXECUTE .
+
 # Extraversion
-1  talks to people easily 
-*2  has difficulty making new friends *
-3  immediately feels at home in new places 
-4 tries to establish contact with new classmates 
-*5  withdraws into him/herself *
-*6  needs time to get used to peers *
-*7  does not know how to behave in social situations *
+*1  talks to people easily *
+2  has difficulty making new friends 
+*3  immediately feels at home in new places *
+*4 tries to establish contact with new classmates* 
+5  withdraws into him/herself 
+6  needs time to get used to peers 
+7  does not know how to behave in social situations 
 8  takes a wait-and-see attitude to strangers 
-*9  tells own experiences uninvited *
+9  tells own experiences uninvited 
 10  expresses feelings 
-*11  keeps feelings and thoughts to him/herself *
-12  says little on own initiative 
+*11  keeps feelings and thoughts to him/herself* 
+*12  says little on own initiative* 
 13  talks all day long 
 14  expresses him/herself in a straightforward way 
 15  talks about own feelings 
@@ -35,25 +49,25 @@ Key - *item* will be recoded
 26  bursts with enthusiasm 
 27  has excessive energy
 28  needs a lot of space to play in 
-29  avoids physical effort
+*29  avoids physical effort*
 30  finds it hard to sit still 
 31  looks for adventure 
 32  likes to let his/her hair down 
 
 # Agreeableness
 33  quick to have feelings hurt 
-34  adapts to others wishes 
+*34  adapts to others wishes *
 35  takes him/herself into consideration first 
 36  does everything to get his/her own way 
 37  is primarily concerned with him/herself 
 38  finds it hard to share with others 
-39  is open to reasonable argument 
+*39  is open to reasonable argument *
 40  shows a lot of jealousy 
 41  is quick to be offended 
 42  quick to argue 
 43  quick to lash out 
 44  bursts out in a rage at setbacks 
-45  has self-control in difficult situations 
+*45  has self-control in difficult situations* 
 46  is easily annoyed 
 47  is readily irritated 
 48  is quick to get angry 
@@ -61,17 +75,17 @@ Key - *item* will be recoded
 50  obeys without protest 
 51  respects authority 
 52  sticks to plans 
-53  resists authority 
+*53  resists authority *
 54  does what is asked 
-55  only helps after repeated requests 
-56  goes against the grain 
-57  is a follower rather than a leader 
+*55  only helps after repeated requests *
+*56  goes against the grain *
+*57  is a follower rather than a leader *
 58  acts like the boss 
 59  manipulates others 
 60  imposes his/her will 
 61  throws his/her weight around 
 62  takes the lead in games with peers 
-63  readily gives in to peers 
+*63  readily gives in to peers *
 64  puts him/herself to the forefront 
 65  shares with peers 
 66  defends the weak 
@@ -90,31 +104,31 @@ Key - *item* will be recoded
 77  dedicates oneself to things with full conviction 
 78  works hard to get top marks 
 79  wants to shine at everything 
-80  goes to school against his/her will 
-81  leaves everything lying around 
+*80  goes to school against his/her will *
+*81  leaves everything lying around *
 82  has a sense of order 
-83  makes a mess of things 
-84  acts rather thoughtlessly 
-85  hates cleaning up 
+*83  makes a mess of things *
+*84  acts rather thoughtlessly* 
+*85  hates cleaning up* 
 86  takes care of his/her possessions 
 87  completes work down to the last detail 
 88  does work in a careful and neat way 
 89  can occupy him/herself for a long time 
 90  works with sustained attention 
-91  forgets anything and everything 
+*91  forgets anything and everything *
 92  finishes tasks to the very end 
 93  can concentrate on one thing for a long time 
-94  often daydreams 
-95  starts a lot of things but cannot keep them up 
-96  is quickly distracted 
-97  takes the easiest way out 
-98  prefers the easy way in life 
-99  prefers to leave the work to others 
+*94  often daydreams* 
+*95  starts a lot of things but cannot keep them up *
+*96  is quickly distracted *
+*97  takes the easiest way out* 
+*98  prefers the easy way in life *
+*99  prefers to leave the work to others* 
 100  keeps at it when the going gets tough 
-101  postpones troublesome things 
-102  is quickly satisfied with own efforts 
+*101  postpones troublesome things* 
+*102  is quickly satisfied with own efforts *
 103  perseveres until the goal is achieved 
-104  soon gives up when something gets too hard 
+*104  soon gives up when something gets too hard *
 
 # Neuroticism
 105  quick to panic 
@@ -126,18 +140,18 @@ Key - *item* will be recoded
 111  is easily depressed 
 112  is readily scared 
 113  has few insecurities 
-114  feels inferior to others 
+*114  feels inferior to others* 
 115  has confidence in own abilities 
-116  doubts him/herself 
+*116  doubts him/herself *
 117  has plenty of nerve 
-118  quick to doubt his/her own capacities 
+*118  quick to doubt his/her own capacities* 
 119  feels at ease with him/herself 
 120  easily makes decisions 
-121  has little imagination 
 
 # Openness
+*121  has little imagination *
 122  can use everyday things in a new way 
-123  lacks creativity 
+*123  lacks creativity *
 124  derives pleasure from creating things 
 125  likes to draw 
 126  has original ideas 
@@ -153,9 +167,9 @@ Key - *item* will be recoded
 136  is interested in anything new 
 137  catches on with half an explanation 
 138  can express own thoughts well 
-139  has a limited vocabulary 
+*139  has a limited vocabulary *
 140  has a good memory
 141  is quick to understand things 
 142  grasps the meaning of things quickly 
-143  needs time to comprehend things 
+*143  needs time to comprehend things *
 144  can express him/herself well 

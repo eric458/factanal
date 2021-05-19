@@ -60,29 +60,86 @@ recode_d<-function(item) {
   return(item)
 }
 
+# Recode Variables using Dr. Wood's SPSS syntax to identify the tables
+# See "itemslist" rmarkdown file
+
+# Create list of variables names that need to be recoded
+var_names<-c( #Extraversion
+            "PRE_PARENT_HIPIC_1", "PRE_PARENT_HIPIC_3","PRE_PARENT_HIPIC_4",
+            "PRE_PARENT_HIPIC_11","PRE_PARENT_HIPIC_12", "PRE_PARENT_HIPIC_29",
+             #Agreeableness
+             "PRE_PARENT_HIPIC_34", "PRE_PARENT_HIPIC_39","PRE_PARENT_HIPIC_45",
+            "PRE_PARENT_HIPIC_53","PRE_PARENT_HIPIC_55", "PRE_PARENT_HIPIC_56",
+            "PRE_PARENT_HIPIC_57", "PRE_PARENT_HIPIC_63",
+            #Conscientiousness
+            "PRE_PARENT_HIPIC_80", "PRE_PARENT_HIPIC_81","PRE_PARENT_HIPIC_83",
+            "PRE_PARENT_HIPIC_84","PRE_PARENT_HIPIC_85", "PRE_PARENT_HIPIC_91",
+            "PRE_PARENT_HIPIC_94", "PRE_PARENT_HIPIC_95","PRE_PARENT_HIPIC_96",
+            "PRE_PARENT_HIPIC_97","PRE_PARENT_HIPIC_98", "PRE_PARENT_HIPIC_99",
+            "PRE_PARENT_HIPIC_101", "PRE_PARENT_HIPIC_102","PRE_PARENT_HIPIC_104",
+            #Neuroticism
+            "PRE_PARENT_HIPIC_114", "PRE_PARENT_HIPIC_116","PRE_PARENT_HIPIC_118",
+            #Openness
+            "PRE_PARENT_HIPIC_121", "PRE_PARENT_HIPIC_123","PRE_PARENT_HIPIC_139",
+            "PRE_PARENT_HIPIC_143")
+
+#Create dataframe with only variables that need to be recoded
+attach(hipic_data)
+table_r_vars<-subset(hipic_data,
+                     select = var_names) 
+detach(hipic_data)
+
+#Recode values and assign new recoded variable name
+for (i in 1:36) {
+  nam<-paste(var_names[i],"_r", sep="")
+  assign(nam, recode_d(table_r_vars[i]))
+}
+
+# Combine Recoded variables into one dataframe
+recoded_table<-data.frame(PRE_PARENT_HIPIC_1_r, PRE_PARENT_HIPIC_3_r,PRE_PARENT_HIPIC_4_r,
+                     PRE_PARENT_HIPIC_11_r,PRE_PARENT_HIPIC_12_r, PRE_PARENT_HIPIC_29_r,
+                     #Agreeableness
+                     PRE_PARENT_HIPIC_34_r, PRE_PARENT_HIPIC_39_r,PRE_PARENT_HIPIC_45_r,
+                     PRE_PARENT_HIPIC_53_r,PRE_PARENT_HIPIC_55_r, PRE_PARENT_HIPIC_56_r,
+                     PRE_PARENT_HIPIC_57_r, PRE_PARENT_HIPIC_63_r,
+                     #Conscientiousness
+                     PRE_PARENT_HIPIC_80_r, PRE_PARENT_HIPIC_81_r,PRE_PARENT_HIPIC_83_r,
+                     PRE_PARENT_HIPIC_84_r,PRE_PARENT_HIPIC_85_r, PRE_PARENT_HIPIC_91_r,
+                     PRE_PARENT_HIPIC_94_r, PRE_PARENT_HIPIC_95_r,PRE_PARENT_HIPIC_96_r,
+                     PRE_PARENT_HIPIC_97_r,PRE_PARENT_HIPIC_98_r, PRE_PARENT_HIPIC_99_r,
+                     PRE_PARENT_HIPIC_101_r, PRE_PARENT_HIPIC_102_r,PRE_PARENT_HIPIC_104_r,
+                     #Neuroticism
+                     PRE_PARENT_HIPIC_114_r, PRE_PARENT_HIPIC_116_r,PRE_PARENT_HIPIC_118_r,
+                     #Openness
+                     PRE_PARENT_HIPIC_121_r, PRE_PARENT_HIPIC_123_r,PRE_PARENT_HIPIC_139_r,
+                     PRE_PARENT_HIPIC_143_r)
+
+#Update Column Variable Names
+colnames(recoded_table)<-c("PRE_PARENT_HIPIC_1_r", "PRE_PARENT_HIPIC_3_r","PRE_PARENT_HIPIC_4_r",
+                          "PRE_PARENT_HIPIC_11_r","PRE_PARENT_HIPIC_12_r", "PRE_PARENT_HIPIC_29_r",
+                          #Agreeableness
+                          "PRE_PARENT_HIPIC_34_r", "PRE_PARENT_HIPIC_39_r","PRE_PARENT_HIPIC_45_r",
+                          "PRE_PARENT_HIPIC_53_r","PRE_PARENT_HIPIC_55_r", "PRE_PARENT_HIPIC_56_r",
+                          "PRE_PARENT_HIPIC_57_r", "PRE_PARENT_HIPIC_63_r",
+                          #Conscientiousness
+                          "PRE_PARENT_HIPIC_80_r", "PRE_PARENT_HIPIC_81_r","PRE_PARENT_HIPIC_83_r",
+                          "PRE_PARENT_HIPIC_84_r","PRE_PARENT_HIPIC_85_r", "PRE_PARENT_HIPIC_91_r",
+                          "PRE_PARENT_HIPIC_94_r", "PRE_PARENT_HIPIC_95_r","PRE_PARENT_HIPIC_96_r",
+                          "PRE_PARENT_HIPIC_97_r","PRE_PARENT_HIPIC_98_r", "PRE_PARENT_HIPIC_99_r",
+                          "PRE_PARENT_HIPIC_101_r", "PRE_PARENT_HIPIC_102_r","PRE_PARENT_HIPIC_104_r",
+                          #Neuroticism
+                          "PRE_PARENT_HIPIC_114_r", "PRE_PARENT_HIPIC_116_r","PRE_PARENT_HIPIC_118_r",
+                          #Openness
+                          "PRE_PARENT_HIPIC_121_r", "PRE_PARENT_HIPIC_123_r","PRE_PARENT_HIPIC_139_r",
+                          "PRE_PARENT_HIPIC_143_r")
 
 
-PRE_PARENT_HIPIC_2_r<-recode_d(hipic_data$PRE_PARENT_HIPIC_2)
-PRE_PARENT_HIPIC_5_r<-recode_d(hipic_data$PRE_PARENT_HIPIC_5)
+#Append Recoded Variables into the hipic_data
+hipic_datav2<- data.frame(hipic_data, recoded_table)
 
-check<-data.frame(PRE_PARENT_HIPIC_2_r,hipic_data$PRE_PARENT_HIPIC_2,
-                  PRE_PARENT_HIPIC_5_r, hipic_data$PRE_PARENT_HIPIC_5)
+#check<-data.frame(hipic_datav2$PRE_PARENT_HIPIC_1, hipic_datav2$PRE_PARENT_HIPIC_1_r)
 
-
-#var_list<-list(hipic_data$PRE_PARENT_HIPIC_2, hipic_data$PRE_PARENT_HIPIC_2)
-
-#data<-data.frame()
-
-#for(x in var_list) {                                   # Head of for-loop
- # recode_d(x)
-  #new <- rep(1, nrow(data))                       # Create new column
-  #data[ , ncol(data) + 1] <- new                  # Append new column
-  #colnames(data)[ncol(data)] <- paste0("new", x)  # Rename column name
-#}
-
-#a<-recode_d(item = hipic_data$PRE_PARENT_HIPIC_2)
-
-#check<-data.frame(hipic_data$PRE_PARENT_HIPIC_2, a)
+rm(list=setdiff(ls(), c("hipic_data", "hipic_datav2", "recode_d"))) 
 
 ##############################
 ## Run Descriptives Table
