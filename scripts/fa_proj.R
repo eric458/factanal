@@ -28,7 +28,7 @@ library(lavaan)
 ##############################
 
 #Read in the data - this is for Jeffrey
-#hipic_data <- read_xlsx("C:/Users/yjeff/Box/255C Final Project/HiPIC raw data.xlsx")
+hipic_data <- read_xlsx("C:/Users/yjeff/Box/255C Final Project/HiPIC raw data.xlsx")
 
 #this is for Jolie
 hipic_data <- read_xlsx("/Users/jolie/Documents/HiPIC raw data.xlsx")
@@ -39,6 +39,50 @@ hipic_data <- read_xlsx("HiPIC raw data.xlsx")
 #for all - run this to get rid of FamilyID
 hipic_data <- subset(hipic_data, select=-FAMILYID)
 
+##############################
+## Recode Data
+##############################
+
+#Recoding Function
+
+recode_d<-function(item) {
+  item<-item
+  original<-item
+  item[item == 5] <- 99
+  item[item == 4] <- 88
+  item[item == 3] <- 3
+  item[item == 2] <- 4
+  item[item == 1] <- 5
+  item[item == 99] <- 1
+  item[item == 88] <- 2
+  print(table(item))
+  print(table(original))
+  return(item)
+}
+
+
+
+PRE_PARENT_HIPIC_2_r<-recode_d(hipic_data$PRE_PARENT_HIPIC_2)
+PRE_PARENT_HIPIC_5_r<-recode_d(hipic_data$PRE_PARENT_HIPIC_5)
+
+check<-data.frame(PRE_PARENT_HIPIC_2_r,hipic_data$PRE_PARENT_HIPIC_2,
+                  PRE_PARENT_HIPIC_5_r, hipic_data$PRE_PARENT_HIPIC_5)
+
+
+#var_list<-list(hipic_data$PRE_PARENT_HIPIC_2, hipic_data$PRE_PARENT_HIPIC_2)
+
+#data<-data.frame()
+
+#for(x in var_list) {                                   # Head of for-loop
+ # recode_d(x)
+  #new <- rep(1, nrow(data))                       # Create new column
+  #data[ , ncol(data) + 1] <- new                  # Append new column
+  #colnames(data)[ncol(data)] <- paste0("new", x)  # Rename column name
+#}
+
+#a<-recode_d(item = hipic_data$PRE_PARENT_HIPIC_2)
+
+#check<-data.frame(hipic_data$PRE_PARENT_HIPIC_2, a)
 
 ##############################
 ## Run Descriptives Table

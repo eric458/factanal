@@ -1,0 +1,161 @@
+---
+title: "Items to Recode"
+author: "Jeffrey, Jolie, Eric"
+date: "5/19/2021"
+output: html_document
+---
+Key - *item* will be recoded
+
+# Extraversion
+1  talks to people easily 
+*2  has difficulty making new friends *
+3  immediately feels at home in new places 
+4 tries to establish contact with new classmates 
+*5  withdraws into him/herself *
+*6  needs time to get used to peers *
+*7  does not know how to behave in social situations *
+8  takes a wait-and-see attitude to strangers 
+*9  tells own experiences uninvited *
+10  expresses feelings 
+*11  keeps feelings and thoughts to him/herself *
+12  says little on own initiative 
+13  talks all day long 
+14  expresses him/herself in a straightforward way 
+15  talks about own feelings 
+16  likes a lot of attention 
+17  goes laughing through life 
+18  arouses the sympathy of classmates 
+19  sees the sunny side of things 
+20  makes people feel good 
+21  enjoys life 
+22  can make companions laugh 
+23  begins and ends the day without a care 
+24  is generally liked   
+25  is constantly on the move  
+26  bursts with enthusiasm 
+27  has excessive energy
+28  needs a lot of space to play in 
+29  avoids physical effort
+30  finds it hard to sit still 
+31  looks for adventure 
+32  likes to let his/her hair down 
+
+# Agreeableness
+33  quick to have feelings hurt 
+34  adapts to others wishes 
+35  takes him/herself into consideration first 
+36  does everything to get his/her own way 
+37  is primarily concerned with him/herself 
+38  finds it hard to share with others 
+39  is open to reasonable argument 
+40  shows a lot of jealousy 
+41  is quick to be offended 
+42  quick to argue 
+43  quick to lash out 
+44  bursts out in a rage at setbacks 
+45  has self-control in difficult situations 
+46  is easily annoyed 
+47  is readily irritated 
+48  is quick to get angry 
+49  respects rules of politeness 
+50  obeys without protest 
+51  respects authority 
+52  sticks to plans 
+53  resists authority 
+54  does what is asked 
+55  only helps after repeated requests 
+56  goes against the grain 
+57  is a follower rather than a leader 
+58  acts like the boss 
+59  manipulates others 
+60  imposes his/her will 
+61  throws his/her weight around 
+62  takes the lead in games with peers 
+63  readily gives in to peers 
+64  puts him/herself to the forefront 
+65  shares with peers 
+66  defends the weak 
+67  is concerned about what happens to others 
+68  is ready to help anybody 
+69  sympathizes with anyone who is sad 
+70  shows concern for other children 
+71  gives to others 
+72  takes others into account 
+
+# Conscientiousness
+73  wants to be among the best 
+74  always does his/her best 
+75  strives for perfection 
+76  makes heavy demands on him/herself 
+77  dedicates oneself to things with full conviction 
+78  works hard to get top marks 
+79  wants to shine at everything 
+80  goes to school against his/her will 
+81  leaves everything lying around 
+82  has a sense of order 
+83  makes a mess of things 
+84  acts rather thoughtlessly 
+85  hates cleaning up 
+86  takes care of his/her possessions 
+87  completes work down to the last detail 
+88  does work in a careful and neat way 
+89  can occupy him/herself for a long time 
+90  works with sustained attention 
+91  forgets anything and everything 
+92  finishes tasks to the very end 
+93  can concentrate on one thing for a long time 
+94  often daydreams 
+95  starts a lot of things but cannot keep them up 
+96  is quickly distracted 
+97  takes the easiest way out 
+98  prefers the easy way in life 
+99  prefers to leave the work to others 
+100  keeps at it when the going gets tough 
+101  postpones troublesome things 
+102  is quickly satisfied with own efforts 
+103  perseveres until the goal is achieved 
+104  soon gives up when something gets too hard 
+
+# Neuroticism
+105  quick to panic 
+106  is afraid of failure 
+107  is quick to worry about things 
+108  tends to cry over setbacks 
+109  is readily discouraged by possible failure 
+110  is afraid of making mistakes 
+111  is easily depressed 
+112  is readily scared 
+113  has few insecurities 
+114  feels inferior to others 
+115  has confidence in own abilities 
+116  doubts him/herself 
+117  has plenty of nerve 
+118  quick to doubt his/her own capacities 
+119  feels at ease with him/herself 
+120  easily makes decisions 
+121  has little imagination 
+
+# Openness
+122  can use everyday things in a new way 
+123  lacks creativity 
+124  derives pleasure from creating things 
+125  likes to draw 
+126  has original ideas 
+127  has a rich imagination 
+128  contributes new ideas 
+129  wants to know the little details of things 
+130  asks many 'why' questions 
+131  has a broad range of interests 
+132  likes to learn new things 
+133  examines the way things are made 
+134  is interested in everything 
+135  notices everything 
+136  is interested in anything new 
+137  catches on with half an explanation 
+138  can express own thoughts well 
+139  has a limited vocabulary 
+140  has a good memory
+141  is quick to understand things 
+142  grasps the meaning of things quickly 
+143  needs time to comprehend things 
+144  can express him/herself well 
