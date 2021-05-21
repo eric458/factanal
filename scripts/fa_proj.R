@@ -193,7 +193,7 @@ cronbach.alpha(hipic_data[121:144], na.rm = TRUE)
 
 #Recoded data - overall
 cronbach.alpha(hipic_datav2, na.rm = TRUE)
-#alpha value is 0.878
+#alpha value is 0.862
 
 #Recoded data - Extaversion
 
