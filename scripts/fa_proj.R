@@ -137,6 +137,28 @@ colnames(recoded_table)<-c("PRE_PARENT_HIPIC_1_r", "PRE_PARENT_HIPIC_3_r","PRE_P
 #Append Recoded Variables into the hipic_data
 hipic_datav2<- data.frame(hipic_data, recoded_table)
 
+hipic_datav2<-subset(hipic_datav2,
+               select = -c(PRE_PARENT_HIPIC_1,
+                 PRE_PARENT_HIPIC_3,PRE_PARENT_HIPIC_4,
+                 PRE_PARENT_HIPIC_11,PRE_PARENT_HIPIC_12, PRE_PARENT_HIPIC_29,
+                 #Agreeableness
+                 PRE_PARENT_HIPIC_34, PRE_PARENT_HIPIC_39,PRE_PARENT_HIPIC_45,
+                 PRE_PARENT_HIPIC_53,PRE_PARENT_HIPIC_55, PRE_PARENT_HIPIC_56,
+                 PRE_PARENT_HIPIC_57, PRE_PARENT_HIPIC_63,
+                 #Conscientiousness
+                 PRE_PARENT_HIPIC_80, PRE_PARENT_HIPIC_81,PRE_PARENT_HIPIC_83,
+                 PRE_PARENT_HIPIC_84,PRE_PARENT_HIPIC_85, PRE_PARENT_HIPIC_91,
+                 PRE_PARENT_HIPIC_94, PRE_PARENT_HIPIC_95,PRE_PARENT_HIPIC_96,
+                 PRE_PARENT_HIPIC_97,PRE_PARENT_HIPIC_98, PRE_PARENT_HIPIC_99,
+                 PRE_PARENT_HIPIC_101,PRE_PARENT_HIPIC_102,PRE_PARENT_HIPIC_104,
+                 #Neuroticism
+                 PRE_PARENT_HIPIC_114, PRE_PARENT_HIPIC_116,PRE_PARENT_HIPIC_118,
+                 #Openness
+                 PRE_PARENT_HIPIC_121, PRE_PARENT_HIPIC_123,PRE_PARENT_HIPIC_139,
+                 PRE_PARENT_HIPIC_143))
+ 
+  
+
 #check<-data.frame(hipic_datav2$PRE_PARENT_HIPIC_1, hipic_datav2$PRE_PARENT_HIPIC_1_r)
 
 rm(list=setdiff(ls(), c("hipic_data", "hipic_datav2", "recode_d"))) 
