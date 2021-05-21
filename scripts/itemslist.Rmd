@@ -139,14 +139,14 @@ RECODE (36 variables total)
 110  is afraid of making mistakes 
 111  is easily depressed 
 112  is readily scared 
-113  has few insecurities 
-*114  feels inferior to others* 
-115  has confidence in own abilities 
-*116  doubts him/herself *
-117  has plenty of nerve 
-*118  quick to doubt his/her own capacities* 
-119  feels at ease with him/herself 
-120  easily makes decisions 
+*113  has few insecurities* 
+114  feels inferior to others 
+*115  has confidence in own abilities* 
+116  doubts him/herself 
+*117  has plenty of nerve *
+118  quick to doubt his/her own capacities 
+*119  feels at ease with him/herself* 
+*120  easily makes decisions*
 
 # Openness
 *121  has little imagination *

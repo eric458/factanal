@@ -16,6 +16,7 @@ library(tidyverse)
 library(qgraph)
 library(polycor)
 library(lavaan)
+library(ltm)
 
 ##############################
 ## directory paths
@@ -78,8 +79,9 @@ var_names<-c( #Extraversion
             "PRE_PARENT_HIPIC_97","PRE_PARENT_HIPIC_98", "PRE_PARENT_HIPIC_99",
             "PRE_PARENT_HIPIC_101", "PRE_PARENT_HIPIC_102","PRE_PARENT_HIPIC_104",
             #Neuroticism
-            "PRE_PARENT_HIPIC_114", "PRE_PARENT_HIPIC_116","PRE_PARENT_HIPIC_118",
-            #Openness
+            "PRE_PARENT_HIPIC_113", "PRE_PARENT_HIPIC_115","PRE_PARENT_HIPIC_117",
+            "PRE_PARENT_HIPIC_119", "PRE_PARENT_HIPIC_120",
+             #Openness
             "PRE_PARENT_HIPIC_121", "PRE_PARENT_HIPIC_123","PRE_PARENT_HIPIC_139",
             "PRE_PARENT_HIPIC_143")
 
@@ -90,7 +92,7 @@ table_r_vars<-subset(hipic_data,
 detach(hipic_data)
 
 #Recode values and assign new recoded variable name
-for (i in 1:36) {
+for (i in 1:38) {
   nam<-paste(var_names[i],"_r", sep="")
   assign(nam, recode_d(table_r_vars[i]))
 }
@@ -109,7 +111,8 @@ recoded_table<-data.frame(PRE_PARENT_HIPIC_1_r, PRE_PARENT_HIPIC_3_r,PRE_PARENT_
                      PRE_PARENT_HIPIC_97_r,PRE_PARENT_HIPIC_98_r, PRE_PARENT_HIPIC_99_r,
                      PRE_PARENT_HIPIC_101_r, PRE_PARENT_HIPIC_102_r,PRE_PARENT_HIPIC_104_r,
                      #Neuroticism
-                     PRE_PARENT_HIPIC_114_r, PRE_PARENT_HIPIC_116_r,PRE_PARENT_HIPIC_118_r,
+                     PRE_PARENT_HIPIC_113_r, PRE_PARENT_HIPIC_115_r, PRE_PARENT_HIPIC_117_r,
+                     PRE_PARENT_HIPIC_119_r, PRE_PARENT_HIPIC_120_r,
                      #Openness
                      PRE_PARENT_HIPIC_121_r, PRE_PARENT_HIPIC_123_r,PRE_PARENT_HIPIC_139_r,
                      PRE_PARENT_HIPIC_143_r)
@@ -128,7 +131,8 @@ colnames(recoded_table)<-c("PRE_PARENT_HIPIC_1_r", "PRE_PARENT_HIPIC_3_r","PRE_P
                           "PRE_PARENT_HIPIC_97_r","PRE_PARENT_HIPIC_98_r", "PRE_PARENT_HIPIC_99_r",
                           "PRE_PARENT_HIPIC_101_r", "PRE_PARENT_HIPIC_102_r","PRE_PARENT_HIPIC_104_r",
                           #Neuroticism
-                          "PRE_PARENT_HIPIC_114_r", "PRE_PARENT_HIPIC_116_r","PRE_PARENT_HIPIC_118_r",
+                          "PRE_PARENT_HIPIC_113_r", "PRE_PARENT_HIPIC_115_r","PRE_PARENT_HIPIC_117_r",
+                          "PRE_PARENT_HIPIC_119_r", "PRE_PARENT_HIPIC_120_r",
                           #Openness
                           "PRE_PARENT_HIPIC_121_r", "PRE_PARENT_HIPIC_123_r","PRE_PARENT_HIPIC_139_r",
                           "PRE_PARENT_HIPIC_143_r")
@@ -152,7 +156,8 @@ hipic_datav2<-subset(hipic_datav2,
                  PRE_PARENT_HIPIC_97,PRE_PARENT_HIPIC_98, PRE_PARENT_HIPIC_99,
                  PRE_PARENT_HIPIC_101,PRE_PARENT_HIPIC_102,PRE_PARENT_HIPIC_104,
                  #Neuroticism
-                 PRE_PARENT_HIPIC_114, PRE_PARENT_HIPIC_116,PRE_PARENT_HIPIC_118,
+                 PRE_PARENT_HIPIC_113, PRE_PARENT_HIPIC_115,PRE_PARENT_HIPIC_117,
+                 PRE_PARENT_HIPIC_119, PRE_PARENT_HIPIC_120,
                  #Openness
                  PRE_PARENT_HIPIC_121, PRE_PARENT_HIPIC_123,PRE_PARENT_HIPIC_139,
                  PRE_PARENT_HIPIC_143))
@@ -162,6 +167,96 @@ hipic_datav2<-subset(hipic_datav2,
 #check<-data.frame(hipic_datav2$PRE_PARENT_HIPIC_1, hipic_datav2$PRE_PARENT_HIPIC_1_r)
 
 rm(list=setdiff(ls(), c("hipic_data", "hipic_datav2", "recode_d"))) 
+
+#########
+# Check alpha values
+#########
+
+#Original data
+cronbach.alpha(hipic_data, na.rm = TRUE)
+
+#Extraversion
+cronbach.alpha(hipic_data[1:32], na.rm = TRUE)
+
+#Agreeableness
+cronbach.alpha(hipic_data[33:72], na.rm = TRUE)
+
+#Conscientiousness
+cronbach.alpha(hipic_data[73:104], na.rm = TRUE)
+
+#Neuroticism
+cronbach.alpha(hipic_data[105:120], na.rm = TRUE)
+
+#Openess
+cronbach.alpha(hipic_data[121:144], na.rm = TRUE)
+
+
+#Recoded data - overall
+cronbach.alpha(hipic_datav2, na.rm = TRUE)
+#alpha value is 0.878
+
+#Recoded data - Extaversion
+
+grep("PRE_PARENT_HIPIC_2", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_32", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_1_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_29_r", names(hipic_datav2))
+
+#Create Extraversion Data subset
+
+ext_recode<-data.frame(hipic_datav2[1:26], hipic_datav2[109:114])
+
+#Run cronbach alpha
+cronbach.alpha(ext_recode,na.rm=TRUE)
+  
+#Recoded data - Agreeableness
+grep("PRE_PARENT_HIPIC_33", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_72", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_34_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_63_r", names(hipic_datav2))
+
+#Create agreeabless Data subset
+agr_recode<-data.frame(hipic_datav2[27:58], hipic_datav2[115:122])
+
+#Run cronbach alpha
+cronbach.alpha(agr_recode,na.rm=TRUE)
+
+#Recoded data - conscientiousness
+grep("PRE_PARENT_HIPIC_73", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_103", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_80_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_104_r", names(hipic_datav2))
+
+#Create conscientiousness Data subset
+con_recode<-data.frame(hipic_datav2[59:75], hipic_datav2[123:137])
+
+#Run cronbach alpha
+cronbach.alpha(con_recode,na.rm=TRUE)
+
+#Recoded data - Neuroticism
+grep("PRE_PARENT_HIPIC_105", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_118", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_113_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_120_r", names(hipic_datav2))
+
+#Create Neuroticism Data subset
+neu_recode<-data.frame(hipic_datav2[76:86], hipic_datav2[136:140])
+
+#Run cronbach alpha
+cronbach.alpha(neu_recode,na.rm=TRUE)
+
+#Recoded data - Openness
+grep("PRE_PARENT_HIPIC_122", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_144", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_121_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_143_r", names(hipic_datav2))
+
+#Create Neuroticism Data subset
+open_recode<-data.frame(hipic_datav2[89:108], hipic_datav2[141:144])
+
+#Run cronbach alpha
+cronbach.alpha(open_recode,na.rm=TRUE)
+
 
 ##############################
 ## Run Descriptives Table
