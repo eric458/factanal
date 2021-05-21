@@ -386,11 +386,25 @@ efa5.neuro.114 <- factanal(factors=5,covmat=rho.neuro.114,n.obs=195,rotation="ob
 efa5.neuro.114
 
 #########################################
-#Neuroticism -- 4 Factor Model -- Items 114 and 111 Removed
+#Neuroticism -- EFA -- 4 Factor Model -- Items 114 and 111 Removed
 #########################################
 
 efa4.neuro.114111 <- factanal(factors=4,covmat=rho.neuro.114111,n.obs=195,rotation="oblimin") 
 efa4.neuro.114111
+
+#########################################
+#Neuroticism -- CFA -- 3 Factor Model -- Items 114 and 111 Removed
+#########################################
+
+cfa3.neuro.model <- 'f1 =~ PRE_PARENT_HIPIC_106 +PRE_PARENT_HIPIC_108 +PRE_PARENT_HIPIC_109+
+                            PRE_PARENT_HIPIC_110
+                      f2 =~ PRE_PARENT_HIPIC_105 +PRE_PARENT_HIPIC_107 +PRE_PARENT_HIPIC_116+
+                            PRE_PARENT_HIPIC_118 + PRE_PARENT_HIPIC_112
+                      f3 =~ PRE_PARENT_HIPIC_113 +PRE_PARENT_HIPIC_115 +PRE_PARENT_HIPIC_117+
+                            PRE_PARENT_HIPIC_119 + PRE_PARENT_HIPIC_120' 
+
+cfa3.neuro.model.fit <- cfa(cfa3.neuro.model, sample.cov=rho.neuro.114111, sample.nobs=195, std.lv=TRUE)
+summary(cfa3.neuro.model.fit, fit.measures=TRUE, standardized=TRUE)
 
 
 #########################################
