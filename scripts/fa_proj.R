@@ -262,7 +262,7 @@ cronbach.alpha(open_recode,na.rm=TRUE)
 ## Run Descriptives Table
 ##############################
 
-desc_table<-round(describe(hipic_data),2)
+desc_table<-round(describe(hipic_datav2),2)
 desc_table = subset(desc_table, select = c("vars","n","mean",
                                            "sd","median","min","max","skew",
                                            "kurtosis", "se"))
@@ -286,12 +286,36 @@ for (i in 1:length(hipic_data)) {
 ################################
 
 #Pearson
-cormat <- cor(hipic_data, method = c("pearson"), use = "complete.obs")
+cormat <- cor(hipic_datav2, method = c("pearson"), use = "complete.obs")
 
 #Polychoric Using Psych Package
-polycormat <- polychoric(hipic_data)
+polycormat <- polychoric(hipic_datav2)
 
-rho <- polycormat$rho
+#Ext
+Ext_cor<- polychoric(ext_recode)
+
+rho.ext <- Ext_cor$rho
+
+#Agr
+agr_cor<- polychoric(agr_recode)
+
+rho.agr <- agr_cor$rho
+
+#Con
+con_cor<- polychoric(con_recode)
+
+rho.con <- con_cor$rho
+
+#Neu
+neu_cor<- polychoric(neu_recode)
+
+rho.neu <- neu_cor$rho
+
+#Open
+opn_cor<- polychoric(open_recode)
+
+rho.opn <- opn_cor$rho
+
 
 #Polychoric Using Polycor Package
 
@@ -300,6 +324,8 @@ rho <- polycormat$rho
 
 #Subset of Extraversion Items
 rho.extra <- rho[1:32, 1:32]
+
+
 
 #Subset of Agreeableness (Benevolence) Items
 rho.agree <- rho[33:72, 33:72]
@@ -334,22 +360,22 @@ fa.parallel(cormat, n.obs=195, fm="ml", fa="fa")
 
 fa.parallel(rho, n.obs=195, fm="ml", fa="fa")
 
-fa.parallel(rho.extra, n.obs=195, fm="ml", fa="fa")
+fa.parallel(rho.ext, n.obs=195, fm="ml", fa="fa")
 #Literature: 4 factors
 #Parallel Analysis: 6 factors
 #Eigenvalues above One: 4 factors
 
-fa.parallel(rho.agree, n.obs=195, fm="ml", fa="fa")
+fa.parallel(rho.agr, n.obs=195, fm="ml", fa="fa")
 #Literature: 5 factors
 #Parallel Analysis: 6 factors
 #Eigenvalues above One: 4 factors
 
 fa.parallel(rho.con, n.obs=195, fm="ml", fa="fa")
 #Literature: 4 factors
-#Parallel Analysis: 6 factors
+#Parallel Analysis: 7 factors
 #Eigenvalues above One: 4 factors
 
-fa.parallel(rho.neuro, n.obs=195, fm="ml", fa="fa")
+fa.parallel(rho.neu, n.obs=195, fm="ml", fa="fa")
 #Literature: 2 factors
 #Parallel Analysis: 5 factors
 #Eigenvalues above One: 2 factors
@@ -358,7 +384,7 @@ fa.parallel(rho.neuro.114, n.obs=195, fm="ml", fa="fa")
 
 fa.parallel(rho.neuro.114111, n.obs=195, fm="ml", fa="fa")
 
-fa.parallel(rho.open, n.obs=195, fm="ml", fa="fa")
+fa.parallel(rho.opn, n.obs=195, fm="ml", fa="fa")
 #Literature: 3 factors
 #Parallel Analysis: 5 factors
 #Eigenvalues above One: 3 factors
