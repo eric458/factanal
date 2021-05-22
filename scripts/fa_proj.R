@@ -92,7 +92,7 @@ table_r_vars<-subset(hipic_data,
 detach(hipic_data)
 
 #Recode values and assign new recoded variable name
-for (i in 1:38) {
+for (i in 1:length(var_names)) {
   nam<-paste(var_names[i],"_r", sep="")
   assign(nam, recode_d(table_r_vars[i]))
 }
@@ -204,7 +204,7 @@ grep("PRE_PARENT_HIPIC_29_r", names(hipic_datav2))
 
 #Create Extraversion Data subset
 
-ext_recode<-data.frame(hipic_datav2[1:26], hipic_datav2[109:114])
+ext_recode<-data.frame(hipic_datav2[1:26], hipic_datav2[107:112])
 
 #Run cronbach alpha
 cronbach.alpha(ext_recode,na.rm=TRUE)
@@ -216,7 +216,7 @@ grep("PRE_PARENT_HIPIC_34_r", names(hipic_datav2))
 grep("PRE_PARENT_HIPIC_63_r", names(hipic_datav2))
 
 #Create agreeabless Data subset
-agr_recode<-data.frame(hipic_datav2[27:58], hipic_datav2[115:122])
+agr_recode<-data.frame(hipic_datav2[27:58], hipic_datav2[113:120])
 
 #Run cronbach alpha
 cronbach.alpha(agr_recode,na.rm=TRUE)
@@ -228,7 +228,7 @@ grep("PRE_PARENT_HIPIC_80_r", names(hipic_datav2))
 grep("PRE_PARENT_HIPIC_104_r", names(hipic_datav2))
 
 #Create conscientiousness Data subset
-con_recode<-data.frame(hipic_datav2[59:75], hipic_datav2[123:137])
+con_recode<-data.frame(hipic_datav2[59:75], hipic_datav2[121:135])
 
 #Run cronbach alpha
 cronbach.alpha(con_recode,na.rm=TRUE)
@@ -252,7 +252,7 @@ grep("PRE_PARENT_HIPIC_121_r", names(hipic_datav2))
 grep("PRE_PARENT_HIPIC_143_r", names(hipic_datav2))
 
 #Create Neuroticism Data subset
-open_recode<-data.frame(hipic_datav2[89:108], hipic_datav2[141:144])
+open_recode<-data.frame(hipic_datav2[87:106], hipic_datav2[141:144])
 
 #Run cronbach alpha
 cronbach.alpha(open_recode,na.rm=TRUE)
@@ -274,10 +274,10 @@ kable(desc_table, caption = "Descriptives of HiPIC Data")
 ## Histograms
 ##############################
 
-for (i in 1:length(hipic_data)) {
-  hist(sapply(hipic_data[,i], as.numeric),
-       main = colnames(hipic_data[i]),
-       xlab =  colnames(hipic_data[i]))
+for (i in 1:length(hipic_datav2)) {
+  hist(sapply(hipic_datav2[,i], as.numeric),
+       main = colnames(hipic_datav2[i]),
+       xlab =  colnames(hipic_datav2[i]))
 }
 
 
