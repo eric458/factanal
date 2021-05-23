@@ -316,41 +316,37 @@ opn_cor<- polychoric(open_recode)
 
 rho.opn <- opn_cor$rho
 
-
+#################
 #Polychoric Using Polycor Package
 
 #Note: I get an error from following code using the polycor package ==>  polycormat2 <- polychor(hipic_data, ML=TRUE)
 
-
 #Subset of Extraversion Items
-rho.extra <- rho[1:32, 1:32]
-
-
+#rho.extra <- rho[1:32, 1:32]
 
 #Subset of Agreeableness (Benevolence) Items
-rho.agree <- rho[33:72, 33:72]
+#rho.agree <- rho[33:72, 33:72]
 
 #Subset of Conscientiousness Items
-rho.con <- rho[73:104, 73:104]
+#rho.con <- rho[73:104, 73:104]
 
 #Subset of Neuroticism Items
-rho.neuro <- rho[105:120, 105:120]
+#rho.neuro <- rho[105:120, 105:120]
 
-rho.neuro.111 <- subset(rho.neuro, select=-PRE_PARENT_HIPIC_111)
-rho.neuro.111 <- t(rho.neuro.111)
-rho.neuro.111 <- subset(rho.neuro.111, select=-PRE_PARENT_HIPIC_111)
+#rho.neuro.111 <- subset(rho.neuro, select=-PRE_PARENT_HIPIC_111)
+#rho.neuro.111 <- t(rho.neuro.111)
+#rho.neuro.111 <- subset(rho.neuro.111, select=-PRE_PARENT_HIPIC_111)
 
-rho.neuro.114 <- subset(rho.neuro, select=-PRE_PARENT_HIPIC_114)
-rho.neuro.114 <- t(rho.neuro.114)
-rho.neuro.114 <- subset(rho.neuro.114, select=-PRE_PARENT_HIPIC_114)
+#rho.neuro.114 <- subset(rho.neuro, select=-PRE_PARENT_HIPIC_114)
+#rho.neuro.114 <- t(rho.neuro.114)
+#rho.neuro.114 <- subset(rho.neuro.114, select=-PRE_PARENT_HIPIC_114)
 
-rho.neuro.114111 <- subset(rho.neuro, select=-c(PRE_PARENT_HIPIC_114,PRE_PARENT_HIPIC_111))
-rho.neuro.114111 <- t(rho.neuro.114111)
-rho.neuro.114111 <- subset(rho.neuro.114111, select=-c(PRE_PARENT_HIPIC_114,PRE_PARENT_HIPIC_111))
+#rho.neuro.114111 <- subset(rho.neuro, select=-c(PRE_PARENT_HIPIC_114,PRE_PARENT_HIPIC_111))
+#rho.neuro.114111 <- t(rho.neuro.114111)
+#rho.neuro.114111 <- subset(rho.neuro.114111, select=-c(PRE_PARENT_HIPIC_114,PRE_PARENT_HIPIC_111))
 
 #Subset of Openness (Imagination) Items
-rho.open <- rho[121:144, 121:144]
-
+#rho.open <- rho[121:144, 121:144]
 
 ################################
 #Parallel Analyses
@@ -380,105 +376,37 @@ fa.parallel(rho.neu, n.obs=195, fm="ml", fa="fa")
 #Parallel Analysis: 5 factors
 #Eigenvalues above One: 2 factors
 
-fa.parallel(rho.neuro.114, n.obs=195, fm="ml", fa="fa")
+#fa.parallel(rho.neuro.114, n.obs=195, fm="ml", fa="fa")
 
-fa.parallel(rho.neuro.114111, n.obs=195, fm="ml", fa="fa")
+#fa.parallel(rho.neuro.114111, n.obs=195, fm="ml", fa="fa")
 
 fa.parallel(rho.opn, n.obs=195, fm="ml", fa="fa")
 #Literature: 3 factors
 #Parallel Analysis: 5 factors
 #Eigenvalues above One: 3 factors
 
-#########################################
-#4 Factor Model with Oblimin Rotation
-#########################################
-
-efa4.oblimin <- factanal(factors=4,covmat=cormat,n.obs=195,rotation="oblimin") 
-efa4.oblimin
-
-
-#########################################
-#5 Factor Model with Oblimin Rotation
-#########################################
-
-efa5.oblimin <- factanal(factors=5,covmat=cormat,n.obs=195,rotation="oblimin") 
-efa5.oblimin
-
-
-#########################################
-#6 Factor Model with Oblimin Rotation
-#########################################
-
-efa6.oblimin <- factanal(factors=6,covmat=cormat,n.obs=195,rotation="oblimin") 
-efa6.oblimin
-
-
-#########################################
-#11 Factor Model with Oblimin Rotation
-#########################################
-
-efa11.oblimin <- factanal(factors=11,covmat=cormat,n.obs=195,rotation="oblimin") 
-efa11.oblimin
-
-
-#########################################
-#12 Factor Model with Oblimin Rotation
-#########################################
-
-efa12.oblimin <- factanal(factors=12,covmat=cormat,n.obs=195,rotation="oblimin") 
-efa12.oblimin
-
-efa12.oblimin.rho <- factanal(factors=12,covmat=rho,n.obs=195,rotation="oblimin") 
-efa12.oblimin.rho
-
-#########################################
-#13 Factor Model with Oblimin Rotation
-#########################################
-
-efa13.oblimin <- factanal(factors=13,covmat=cormat,n.obs=195,rotation="oblimin") 
-efa13.oblimin
-
-efa13.oblimin.rho <- factanal(factors=13,covmat=rho,n.obs=195,rotation="oblimin") 
-efa13.oblimin.rho
-
 
 #########################################
 #Extraversion -- 4 Factor Model
 #########################################
 
-efa4.extra <- factanal(factors=4,covmat=rho.extra,n.obs=195,rotation="oblimin") 
+efa4.extra <- factanal(factors=4,covmat=rho.ext,n.obs=195,rotation="oblimin") 
 efa4.extra
-
-
-#########################################
-#Extraversion -- 6 Factor Model
-#########################################
-
-efa6.extra <- factanal(factors=6,covmat=rho.extra,n.obs=195,rotation="oblimin") 
-efa6.extra
 
 
 #########################################
 #Agreeableness -- 5 Factor Model
 #########################################
 
-efa5.agree <- factanal(factors=5,covmat=rho.agree,n.obs=195,rotation="oblimin") 
+efa5.agree <- factanal(factors=5,covmat=rho.agr,n.obs=195,rotation="oblimin") 
 efa5.agree
-
-
-#########################################
-#Agreeableness -- 6 Factor Model
-#########################################
-
-efa6.agree <- factanal(factors=6,covmat=rho.agree,n.obs=195,rotation="oblimin") 
-efa6.agree
 
 
 #########################################
 #Agreeableness -- 4 Factor Model
 #########################################
 
-efa4.agree <- factanal(factors=4,covmat=rho.agree,n.obs=195,rotation="oblimin") 
+efa4.agree <- factanal(factors=4,covmat=rho.agr,n.obs=195,rotation="oblimin") 
 efa4.agree
 
 
@@ -491,49 +419,12 @@ efa4.con
 
 
 #########################################
-#Conscientiousness -- 6 Factor Model
+#Neuroticism -- 2 Factor Model
 #########################################
 
-efa6.con <- factanal(factors=6,covmat=rho.con,n.obs=195,rotation="oblimin") 
-efa6.con
+efa2.neuro <- factanal(factors=2,covmat=rho.neu,n.obs=195,rotation="oblimin") 
+efa2.neuro
 
-
-#########################################
-#Neuroticism -- 5 Factor Model
-#########################################
-
-efa5.neuro <- factanal(factors=5,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
-efa5.neuro
-
-
-#########################################
-#Neuroticism -- 5 Factor Model -- Uncorrelated
-#########################################
-
-efa5.neuro.var <- factanal(factors=5,covmat=rho.neuro,n.obs=195,rotation="varimax") 
-efa5.neuro.var
-
-
-#########################################
-#Neuroticism -- 5 Factor Model -- Item 111 Removed
-#########################################
-
-efa5.neuro.111 <- factanal(factors=5,covmat=rho.neuro.111,n.obs=195,rotation="oblimin") 
-efa5.neuro.111
-
-#########################################
-#Neuroticism -- 5 Factor Model -- Item 114 Removed
-#########################################
-
-efa5.neuro.114 <- factanal(factors=5,covmat=rho.neuro.114,n.obs=195,rotation="oblimin") 
-efa5.neuro.114
-
-#########################################
-#Neuroticism -- EFA -- 4 Factor Model -- Items 114 and 111 Removed
-#########################################
-
-efa4.neuro.114111 <- factanal(factors=4,covmat=rho.neuro.114111,n.obs=195,rotation="oblimin") 
-efa4.neuro.114111
 
 #########################################
 #Neuroticism -- CFA -- 3 Factor Model -- Items 114 and 111 Removed
@@ -550,34 +441,15 @@ cfa3.neuro.model.fit <- cfa(cfa3.neuro.model, sample.cov=rho.neuro.114111, sampl
 summary(cfa3.neuro.model.fit, fit.measures=TRUE, standardized=TRUE)
 
 
-#########################################
-#Neuroticism -- 2 Factor Model
-#########################################
-
-efa2.neuro <- factanal(factors=2,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
-efa2.neuro
-
-
-#########################################
-#Neuroticism -- 4 Factor Model
-#########################################
-
-efa4.neuro <- factanal(factors=4,covmat=rho.neuro,n.obs=195,rotation="oblimin") 
-efa4.neuro
-
-
-#########################################
-#Openness -- 5 Factor Model
-#########################################
-
-efa5.open <- factanal(factors=5,covmat=rho.open,n.obs=195,rotation="oblimin") 
-efa5.open
-
 
 #########################################
 #Openness -- 3 Factor Model
 #########################################
 
-efa3.open <- factanal(factors=3,covmat=rho.open,n.obs=195,rotation="oblimin") 
+efa3.open <- factanal(factors=3,covmat=rho.opn,n.obs=195,rotation="oblimin") 
 efa3.open
+
+
+
+
 
