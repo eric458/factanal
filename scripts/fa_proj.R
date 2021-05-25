@@ -390,8 +390,36 @@ fa.parallel(rho.opn, n.obs=195, fm="ml", fa="fa")
 #Extraversion -- 4 Factor Model
 #########################################
 
+#EFA
 efa4.extra <- factanal(factors=4,covmat=rho.ext,n.obs=195,rotation="oblimin") 
 efa4.extra
+
+#CFA
+cfa4.extra.model <- 'f1 =~ PRE_PARENT_HIPIC_8 +PRE_PARENT_HIPIC_9 +
+                            PRE_PARENT_HIPIC_10 +PRE_PARENT_HIPIC_15 +
+                            PRE_PARENT_HIPIC_16 +PRE_PARENT_HIPIC_1_r +
+                            PRE_PARENT_HIPIC_4_r + PRE_PARENT_HIPIC_11_r +
+                            PRE_PARENT_HIPIC_12_r + PRE_PARENT_HIPIC_5 +
+                            PRE_PARENT_HIPIC_14 + PRE_PARENT_HIPIC_13 +
+                            PRE_PARENT_HIPIC_6
+                      f2 =~ PRE_PARENT_HIPIC_17 +PRE_PARENT_HIPIC_19 +
+                            PRE_PARENT_HIPIC_20 +PRE_PARENT_HIPIC_21 +
+                            PRE_PARENT_HIPIC_22 +PRE_PARENT_HIPIC_24 +
+                            PRE_PARENT_HIPIC_26 +PRE_PARENT_HIPIC_18
+                      f3 =~ PRE_PARENT_HIPIC_25 +PRE_PARENT_HIPIC_27 +
+                            PRE_PARENT_HIPIC_28 +PRE_PARENT_HIPIC_30 +
+                            PRE_PARENT_HIPIC_13 +PRE_PARENT_HIPIC_26 +
+                            PRE_PARENT_HIPIC_31 +PRE_PARENT_HIPIC_29_r
+                      f4 =~ PRE_PARENT_HIPIC_2 +PRE_PARENT_HIPIC_7 +
+                            PRE_PARENT_HIPIC_5 +PRE_PARENT_HIPIC_6'
+
+#Note: I (Jeffrey) didn't include all the extraversion items 
+#(per what we decided in the google doc), should I have made a smaller 
+# covariance matrix to run this CFA?
+cfa4.extra.model.fit <-cfa(cfa4.extra.model, sample.cov=rho.ext,
+                           sample.nobs=195, std.lv=TRUE)
+
+summary(cfa4.extra.model.fit, fit.measures=TRUE, standardized=TRUE)
 
 
 #########################################
