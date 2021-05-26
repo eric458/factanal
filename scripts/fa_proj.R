@@ -471,13 +471,17 @@ summary(cfa3.neuro.model.fit, fit.measures=TRUE, standardized=TRUE)
 
 
 #########################################
-#Openness -- 3 Factor Model
+#Openness -- 3 Factor Model 
 #########################################
 
 efa3.open <- factanal(factors=3,covmat=rho.opn,n.obs=195,rotation="oblimin") 
 efa3.open
 
 
+###########################################################################
+#Openness -- 3 Factor Model -- With "fa" function from the Psych package
+###########################################################################
 
-
+efa3open <- fa(r=rho.opn, nfactors=3,rotate ="oblimin") 
+efa3open
 
