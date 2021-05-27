@@ -422,6 +422,7 @@ cfa4.extra.model.fit <-cfa(cfa4.extra.model, sample.cov=rho.ext,
 summary(cfa4.extra.model.fit, fit.measures=TRUE, standardized=TRUE)
 
 
+
 #########################################
 #Agreeableness -- 5 Factor Model
 #########################################
@@ -500,6 +501,40 @@ summary(cfa4.agree.model.fit, fit.measures=TRUE, standardized=TRUE)
 
 efa4.con <- factanal(factors=4,covmat=rho.con,n.obs=195,rotation="oblimin")
 efa4.con
+
+#CFA
+cfa4.con.model <- 'f1 =~ PRE_PARENT_HIPIC_73 +PRE_PARENT_HIPIC_74 +
+PRE_PARENT_HIPIC_75 +PRE_PARENT_HIPIC_76 +
+PRE_PARENT_HIPIC_77 +PRE_PARENT_HIPIC_78 +
+PRE_PARENT_HIPIC_79 + PRE_PARENT_HIPIC_80_r
+f2 =~ PRE_PARENT_HIPIC_81_r +PRE_PARENT_HIPIC_82 +
+PRE_PARENT_HIPIC_83_r +PRE_PARENT_HIPIC_84_r +
+PRE_PARENT_HIPIC_85_r +PRE_PARENT_HIPIC_86 +
+PRE_PARENT_HIPIC_87 +PRE_PARENT_HIPIC_88
+f3 =~ PRE_PARENT_HIPIC_89 +PRE_PARENT_HIPIC_90 +
+PRE_PARENT_HIPIC_91_r +PRE_PARENT_HIPIC_92 +PRE_PARENT_HIPIC_93 + 
+PRE_PARENT_HIPIC_94_r +PRE_PARENT_HIPIC_95_r +PRE_PARENT_HIPIC_96_r
+f4 =~ PRE_PARENT_HIPIC_97_r +PRE_PARENT_HIPIC_98_r +
+PRE_PARENT_HIPIC_99_r +PRE_PARENT_HIPIC_100 +PRE_PARENT_HIPIC_101_r + 
+PRE_PARENT_HIPIC_102_r +PRE_PARENT_HIPIC_103 +PRE_PARENT_HIPIC_104_r'
+
+#Updated correlation matrix and removed 2 items 80 & 102
+rho.con.v2 <- subset(rho.con, select=-c(PRE_PARENT_HIPIC_80_r,PRE_PARENT_HIPIC_102_r))
+rho.con.v2 <- t(rho.con.v2)
+rho.con.v2 <- subset(rho.con.v2, select=-c(PRE_PARENT_HIPIC_80_r,PRE_PARENT_HIPIC_102_r))
+
+#Note: I (Jeffrey) didn't include all the extraversion items 
+#(per what we decided in the google doc), should I have made a smaller 
+# covariance matrix to run this CFA?
+cfa4.con.model.fit <-cfa(cfa4.con.model, sample.cov=rho.con,
+                           sample.nobs=195, std.lv=TRUE)
+
+summary(cfa4.con.model.fit, fit.measures=TRUE, standardized=TRUE)
+
+
+#Using Conscientiousness subdomains from established research article Tackett
+
+
 
 
 #########################################
