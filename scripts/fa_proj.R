@@ -429,6 +429,37 @@ summary(cfa4.extra.model.fit, fit.measures=TRUE, standardized=TRUE)
 efa5.agree <- factanal(factors=5,covmat=rho.agr,n.obs=195,rotation="oblimin") 
 efa5.agree
 
+#CFA
+cfa5.agree.model <- 'f1 =~ PRE_PARENT_HIPIC_33 +PRE_PARENT_HIPIC_40 +
+                            PRE_PARENT_HIPIC_41 +PRE_PARENT_HIPIC_42 +
+                            PRE_PARENT_HIPIC_43 +PRE_PARENT_HIPIC_44 +
+                            PRE_PARENT_HIPIC_46 + PRE_PARENT_HIPIC_47 +
+                            PRE_PARENT_HIPIC_48 
+                      f2 =~ PRE_PARENT_HIPIC_65 +PRE_PARENT_HIPIC_66 +
+                            PRE_PARENT_HIPIC_67 +PRE_PARENT_HIPIC_68 +
+                            PRE_PARENT_HIPIC_69 +PRE_PARENT_HIPIC_70 +
+                            PRE_PARENT_HIPIC_71 +PRE_PARENT_HIPIC_72
+                      f3 =~ PRE_PARENT_HIPIC_39_r +PRE_PARENT_HIPIC_45_r +
+                            PRE_PARENT_HIPIC_49 +PRE_PARENT_HIPIC_50 +
+                            PRE_PARENT_HIPIC_51 +PRE_PARENT_HIPIC_52 +
+                            PRE_PARENT_HIPIC_53_r +PRE_PARENT_HIPIC_54+
+                            PRE_PARENT_HIPIC_65
+                      f4 =~ PRE_PARENT_HIPIC_56_r +PRE_PARENT_HIPIC_57_r +
+                            PRE_PARENT_HIPIC_58 +PRE_PARENT_HIPIC_62+
+                            PRE_PARENT_HIPIC_64 +PRE_PARENT_HIPIC_63_r+
+                            PRE_PARENT_HIPIC_59 +PRE_PARENT_HIPIC_60+
+                            PRE_PARENT_HIPIC_61
+                      f5 =~ PRE_PARENT_HIPIC_35 +PRE_PARENT_HIPIC_36 +
+                            PRE_PARENT_HIPIC_37 +PRE_PARENT_HIPIC_38+
+                            PRE_PARENT_HIPIC_55_r +PRE_PARENT_HIPIC_59'
+
+#Note: Did not include item 34
+
+cfa5.agree.model.fit <-cfa(cfa5.agree.model, sample.cov=rho.agr,
+                           sample.nobs=195, std.lv=TRUE)
+
+summary(cfa5.agree.model.fit, fit.measures=TRUE, standardized=TRUE)
+
 
 #########################################
 #Agreeableness -- 4 Factor Model
@@ -436,6 +467,31 @@ efa5.agree
 
 efa4.agree <- factanal(factors=4,covmat=rho.agr,n.obs=195,rotation="oblimin") 
 efa4.agree
+
+#CFA
+cfa4.agree.model <- 'f1 =~ PRE_PARENT_HIPIC_33 +PRE_PARENT_HIPIC_40 +
+                            PRE_PARENT_HIPIC_41 +PRE_PARENT_HIPIC_42 +
+                            PRE_PARENT_HIPIC_43 +PRE_PARENT_HIPIC_44 +
+                            PRE_PARENT_HIPIC_46 + PRE_PARENT_HIPIC_47 +
+                            PRE_PARENT_HIPIC_48 
+                      f2 =~ PRE_PARENT_HIPIC_66 +
+                            PRE_PARENT_HIPIC_67 +PRE_PARENT_HIPIC_68 +
+                            PRE_PARENT_HIPIC_69 +PRE_PARENT_HIPIC_70 +
+                            PRE_PARENT_HIPIC_71 +PRE_PARENT_HIPIC_72
+                      f3 =~ PRE_PARENT_HIPIC_35 +PRE_PARENT_HIPIC_36 +
+                            PRE_PARENT_HIPIC_37 +PRE_PARENT_HIPIC_38 +
+                            PRE_PARENT_HIPIC_58 +PRE_PARENT_HIPIC_59 +
+                            PRE_PARENT_HIPIC_60 +PRE_PARENT_HIPIC_61+
+                            PRE_PARENT_HIPIC_62 + PRE_PARENT_HIPIC_64
+                      f4 =~ PRE_PARENT_HIPIC_45_r +PRE_PARENT_HIPIC_49 +
+                            PRE_PARENT_HIPIC_50 +PRE_PARENT_HIPIC_51+
+                            PRE_PARENT_HIPIC_52 +PRE_PARENT_HIPIC_54'
+
+#Unsure about the cross loaded items section
+cfa4.agree.model.fit <-cfa(cfa4.agree.model, sample.cov=rho.agr,
+                           sample.nobs=195, std.lv=TRUE)
+
+summary(cfa4.agree.model.fit, fit.measures=TRUE, standardized=TRUE)
 
 
 #########################################
