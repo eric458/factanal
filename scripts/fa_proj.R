@@ -502,6 +502,15 @@ summary(cfa4.agree.model.fit, fit.measures=TRUE, standardized=TRUE)
 efa4.con <- factanal(factors=4,covmat=rho.con,n.obs=195,rotation="oblimin")
 efa4.con
 
+efa7.con <- factanal(factors=7,covmat=rho.con,n.obs=195,rotation="oblimin")
+efa7.con
+
+efa4.con <- fa(r=rho.con, nfactors=4,n.obs=195,rotate="oblimin")
+efa4.con
+
+efa7.con <- fa(r=rho.con, nfactors=7,n.obs=195,rotate="oblimin")
+efa7.con
+
 #CFA
 cfa4.con.model <- 'f1 =~ PRE_PARENT_HIPIC_73 +PRE_PARENT_HIPIC_74 +
 PRE_PARENT_HIPIC_75 +PRE_PARENT_HIPIC_76 +
