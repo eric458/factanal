@@ -532,7 +532,7 @@ cfa4.con.model.fit <-cfa(cfa4.con.model, sample.cov=rho.con,
 summary(cfa4.con.model.fit, fit.measures=TRUE, standardized=TRUE)
 
 
-#Using Conscientiousness subdomains from established research article Tackett
+ #Using Conscientiousness subdomains from established research article Tackett
 
 
 
@@ -569,10 +569,5 @@ efa3.open <- factanal(factors=3,covmat=rho.opn,n.obs=195,rotation="oblimin")
 efa3.open
 
 
-###########################################################################
-#Openness -- 3 Factor Model -- With "fa" function from the Psych package
-###########################################################################
 
-efa3open <- fa(r=rho.opn, nfactors=3,rotate ="oblimin") 
-efa3open
 
