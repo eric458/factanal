@@ -556,10 +556,32 @@ efa6.con.v4 <- fa(r=rho.con.v3, nfactors=6,n.obs=195,rotate="oblimin")
 efa6.con.v4
 
 
+#Updated correlation matrix and removed 9 items
+rho.con.v4 <- subset(rho.con.v3,
+                     select=-c(PRE_PARENT_HIPIC_98_r))
+rho.con.v4 <- t(rho.con.v4)
+rho.con.v4 <- subset(rho.con.v4,
+                     select=-c(PRE_PARENT_HIPIC_98_r))
+
+
+#Re-Run 6-Factor EFA
+
+efa6.con.v5 <- fa(r=rho.con.v4, nfactors=6,n.obs=195,rotate="oblimin")
+efa6.con.v5
+
+
 #Run 5-Factor EFA
 
 efa5.con.v5 <- fa(r=rho.con.v3, nfactors=5,n.obs=195,rotate="oblimin")
 efa5.con.v5
+
+
+#Four Factor EFA (with removing factor 98_r; kept items: 100 and 103)
+
+efa4.con.v6 <- fa(r=rho.con.v4, nfactors=4,n.obs=195,rotate="oblimin")
+efa4.con.v6
+
+
 
 #CFA
 cfa4.con.model <- 'f1 =~ PRE_PARENT_HIPIC_73 +PRE_PARENT_HIPIC_74 +
