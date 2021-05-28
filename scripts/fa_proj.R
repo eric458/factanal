@@ -505,11 +505,11 @@ efa4.con
 efa7.con <- factanal(factors=7,covmat=rho.con,n.obs=195,rotation="oblimin")
 efa7.con
 
-efa4.con <- fa(r=rho.con, nfactors=4,n.obs=195,rotate="oblimin")
-efa4.con
+efa4.con.v2 <- fa(r=rho.con, nfactors=4,n.obs=195,rotate="oblimin")
+efa4.con.v2
 
-efa7.con <- fa(r=rho.con, nfactors=7,n.obs=195,rotate="oblimin")
-efa7.con
+efa7.con.v2 <- fa(r=rho.con, nfactors=7,n.obs=195,rotate="oblimin")
+efa7.con.v2
 
 #CFA
 cfa4.con.model <- 'f1 =~ PRE_PARENT_HIPIC_73 +PRE_PARENT_HIPIC_74 +
