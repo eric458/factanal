@@ -556,10 +556,116 @@ efa6.con.v4 <- fa(r=rho.con.v3, nfactors=6,n.obs=195,rotate="oblimin")
 efa6.con.v4
 
 
+#Updated correlation matrix and removed 9 items
+rho.con.v4 <- subset(rho.con.v3,
+                     select=-c(PRE_PARENT_HIPIC_98_r))
+rho.con.v4 <- t(rho.con.v4)
+rho.con.v4 <- subset(rho.con.v4,
+                     select=-c(PRE_PARENT_HIPIC_98_r))
+
+
+#Re-Run 6-Factor EFA
+
+efa6.con.v5 <- fa(r=rho.con.v4, nfactors=6,n.obs=195,rotate="oblimin")
+efa6.con.v5
+
+
 #Run 5-Factor EFA
 
 efa5.con.v5 <- fa(r=rho.con.v3, nfactors=5,n.obs=195,rotate="oblimin")
 efa5.con.v5
+
+
+#Four Factor EFA (with removing factor 98_r; kept items: 100 and 103)
+
+efa4.con.v6 <- fa(r=rho.con.v4, nfactors=4,n.obs=195,rotate="oblimin")
+efa4.con.v6
+
+
+######
+#CFA of the 6, 5, and 4 factors
+#####
+
+#6 Factors
+
+cfa6.con.model <- 'f1 =~ PRE_PARENT_HIPIC_73 +PRE_PARENT_HIPIC_74 +
+PRE_PARENT_HIPIC_75 +PRE_PARENT_HIPIC_76 +
+PRE_PARENT_HIPIC_77 +PRE_PARENT_HIPIC_78 +
+PRE_PARENT_HIPIC_79
+f2 =~ PRE_PARENT_HIPIC_81_r + PRE_PARENT_HIPIC_83_r +
+PRE_PARENT_HIPIC_84_r + PRE_PARENT_HIPIC_85_r 
+f3 =~ PRE_PARENT_HIPIC_97_r +PRE_PARENT_HIPIC_99_r 
+f4 =~ PRE_PARENT_HIPIC_100 +PRE_PARENT_HIPIC_103 
+f5 =~ PRE_PARENT_HIPIC_89 +PRE_PARENT_HIPIC_90 +
+PRE_PARENT_HIPIC_93
+f6 =~ PRE_PARENT_HIPIC_82 +PRE_PARENT_HIPIC_86 +
+PRE_PARENT_HIPIC_88
+'
+
+cfa6.con.model.fit <-cfa(cfa6.con.model, sample.cov=rho.con.v4,
+                         sample.nobs=195, std.lv=TRUE)
+
+summary(cfa6.con.model.fit, fit.measures=TRUE, standardized=TRUE)
+
+#5 Factors
+
+cfa5.con.model <- 'f1 =~ PRE_PARENT_HIPIC_73 +PRE_PARENT_HIPIC_74 +
+PRE_PARENT_HIPIC_75 +PRE_PARENT_HIPIC_76 +
+PRE_PARENT_HIPIC_77 +PRE_PARENT_HIPIC_78 +
+PRE_PARENT_HIPIC_79
+f2 =~ PRE_PARENT_HIPIC_97_r + PRE_PARENT_HIPIC_98_r + PRE_PARENT_HIPIC_99_r 
+f3 =~ PRE_PARENT_HIPIC_81_r + PRE_PARENT_HIPIC_83_r +
+PRE_PARENT_HIPIC_84_r + PRE_PARENT_HIPIC_85_r 
+f4 =~ PRE_PARENT_HIPIC_89 +PRE_PARENT_HIPIC_90 + PRE_PARENT_HIPIC_93 
+f5 =~ PRE_PARENT_HIPIC_82 +PRE_PARENT_HIPIC_86 + PRE_PARENT_HIPIC_88'
+
+#Updated correlation matrix and removed 9 items
+rho.con.v5 <- subset(rho.con.v3,
+                     select=-c(PRE_PARENT_HIPIC_100, PRE_PARENT_HIPIC_103))
+rho.con.v5 <- t(rho.con.v5)
+rho.con.v5 <- subset(rho.con.v5,
+                     select=-c(PRE_PARENT_HIPIC_100, PRE_PARENT_HIPIC_103))
+
+cfa5.con.model.fit <-cfa(cfa5.con.model, sample.cov=rho.con.v5,
+                         sample.nobs=195, std.lv=TRUE)
+
+summary(cfa5.con.model.fit, fit.measures=TRUE, standardized=TRUE)
+
+#4 Factor Model
+
+cfa4.con.model <- 'f1 =~ PRE_PARENT_HIPIC_73 +PRE_PARENT_HIPIC_74 +
+PRE_PARENT_HIPIC_75 +PRE_PARENT_HIPIC_76 +
+PRE_PARENT_HIPIC_77 +PRE_PARENT_HIPIC_78 +
+PRE_PARENT_HIPIC_79 + PRE_PARENT_HIPIC_103 
+f2 =~ PRE_PARENT_HIPIC_82 + PRE_PARENT_HIPIC_86 + PRE_PARENT_HIPIC_81_r +
+PRE_PARENT_HIPIC_83_r
+f3 =~ PRE_PARENT_HIPIC_97_r + PRE_PARENT_HIPIC_99_r
+f4 =~ PRE_PARENT_HIPIC_89 +PRE_PARENT_HIPIC_90 + PRE_PARENT_HIPIC_93'
+
+#Updated correlation matrix and removed 9 items
+rho.con.v6 <- subset(rho.con.v4,
+                     select=-c(PRE_PARENT_HIPIC_88, PRE_PARENT_HIPIC_100,
+                               PRE_PARENT_HIPIC_84_r, PRE_PARENT_HIPIC_85_r))
+rho.con.v6 <- t(rho.con.v6)
+rho.con.v6 <- subset(rho.con.v6,
+                     select=-c(PRE_PARENT_HIPIC_88, PRE_PARENT_HIPIC_100,
+                               PRE_PARENT_HIPIC_84_r, PRE_PARENT_HIPIC_85_r))
+
+cfa4.con.model.fit <-cfa(cfa4.con.model, sample.cov=rho.con.v6,
+                         sample.nobs=195, std.lv=TRUE)
+
+summary(cfa4.con.model.fit, fit.measures=TRUE, standardized=TRUE)
+
+
+
+
+cfa6.con.model.fit <-cfa(cfa6.con.model, sample.cov=rho.con.v4,
+                         sample.nobs=195, std.lv=TRUE)
+
+summary(cfa6.con.model.fit, fit.measures=TRUE, standardized=TRUE)
+
+
+
 
 #CFA
 cfa4.con.model <- 'f1 =~ PRE_PARENT_HIPIC_73 +PRE_PARENT_HIPIC_74 +
