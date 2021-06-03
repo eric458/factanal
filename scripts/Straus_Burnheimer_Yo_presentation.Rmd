@@ -276,7 +276,7 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
 ## Hypothesis & Research Question
 
 - The Big Five domains of personality exist within the autistic population but that the subdomains may differ since personality differences can affect individuals with ASD.
-- Which personality traits emerge within the Conscientiousness domain (i.e., on the Big Five domains of personality) from the HiPIC questionnaire for this sample of autistic children?
+- Which personality traits emerge within the Conscientiousness domain (i.e., one of the Big Five personality domains) from the HiPIC questionnaire for this sample of autistic children?
 
 ## Data - Wood et al. (2019) Study 
 
@@ -286,7 +286,16 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
   - IQ > 70
   - An ASD clinical diagnosis by 2 clinicians
   - Maladaptive and interfering anxiety
-- 20% Female; 22% Latinx, 6% African American, 8% Asian/Pacific Islander, 76% White, 1% Native American or Alaskan, and 3% multiracial.
+
+|Demographics by Gender, Race, & Ethnicity| % | 
+|-----------------------------------------|---|
+|Female                                   |20 |
+|White                                    |76 |
+|Latinx                                   |22 |
+|Asian/Pacific Islander                   |8  |
+|African American                         |6  |
+|Multiracial                              |3  |
+|American Indian/Alaskan Native           |1  |
 
 ## Hierarchical Personality Inventory for Children (HiPIC)
 
