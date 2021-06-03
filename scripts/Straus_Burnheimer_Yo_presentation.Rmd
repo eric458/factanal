@@ -286,6 +286,8 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
   - IQ > 70
   - An ASD clinical diagnosis by 2 clinicians
   - Maladaptive and interfering anxiety
+  
+## Data - Wood et al. (2019) Study 
 
 |Demographics by Gender, Race, & Ethnicity| % | 
 |-----------------------------------------|---|
