@@ -316,13 +316,14 @@ fa.parallel(rho.con, n.obs=195, fm="ml", fa="fa")
 - Reveal 7 Factors, 4 factors with $\lambda>1$.
 
 
-## Procedure - EFA
+## Procedure - EFA & CFA Analysis
 
 - Parallel analysis showed more factors than HiPIC was intended to measure
-- Proceeded with EFA:
+- Proceed with EFA:
   1. Conduct EFA and observe model fit indices
   2. Remove items that did not fit and/or had loadings $<0.45$ in all factors
-  3. Repeat steps 1 & 2
+  3. Repeat steps 1 & 2 until satisfactory model fit
+- Proceed with CFA
   
 ## EFA Results
 
