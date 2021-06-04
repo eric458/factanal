@@ -1,0 +1,390 @@
+---
+title: "Factor Structure of the Hierarchial Personality Inventory for Children (HiPIC) as it applies to Autistic Chidlren"
+author: "Straus, J., Burnheimer, E., Yo, J."
+date: "June 8, 2021"
+output: beamer_presentation
+---
+
+```{r echo=FALSE, results='hide', message=FALSE}
+
+##############################
+## libraries
+##############################
+
+library(readxl)
+library(psych)
+library(knitr)
+library(GPArotation)
+library(tidyverse)
+library(qgraph)
+library(polycor)
+library(lavaan)
+library(ltm)
+
+##############################
+## Read in Data
+##############################
+
+#Read in the data - this is for Jeffrey
+hipic_data <- read_xlsx("C:/Users/yjeff/Box/255C Final Project/HiPIC raw data.xlsx")
+
+#for all - run this to get rid of FamilyID
+hipic_data <- subset(hipic_data, select=-FAMILYID)
+
+##############################
+## Recode Data
+##############################
+
+#Recoding Function
+
+recode_d<-function(item) {
+  item<-item
+  original<-item
+  item[item == 5] <- 99
+  item[item == 4] <- 88
+  item[item == 3] <- 3
+  item[item == 2] <- 4
+  item[item == 1] <- 5
+  item[item == 99] <- 1
+  item[item == 88] <- 2
+  print(table(item))
+  print(table(original))
+  return(item)
+}
+
+# Recode Variables using Dr. Wood's SPSS syntax to identify the tables
+# See "itemslist" rmarkdown file
+
+# Create list of variables names that need to be recoded
+var_names<-c( #Extraversion
+            "PRE_PARENT_HIPIC_1", "PRE_PARENT_HIPIC_3","PRE_PARENT_HIPIC_4",
+            "PRE_PARENT_HIPIC_11","PRE_PARENT_HIPIC_12", "PRE_PARENT_HIPIC_29",
+             #Agreeableness
+             "PRE_PARENT_HIPIC_34", "PRE_PARENT_HIPIC_39","PRE_PARENT_HIPIC_45",
+            "PRE_PARENT_HIPIC_53","PRE_PARENT_HIPIC_55", "PRE_PARENT_HIPIC_56",
+            "PRE_PARENT_HIPIC_57", "PRE_PARENT_HIPIC_63",
+            #Conscientiousness
+            "PRE_PARENT_HIPIC_80", "PRE_PARENT_HIPIC_81","PRE_PARENT_HIPIC_83",
+            "PRE_PARENT_HIPIC_84","PRE_PARENT_HIPIC_85", "PRE_PARENT_HIPIC_91",
+            "PRE_PARENT_HIPIC_94", "PRE_PARENT_HIPIC_95","PRE_PARENT_HIPIC_96",
+            "PRE_PARENT_HIPIC_97","PRE_PARENT_HIPIC_98", "PRE_PARENT_HIPIC_99",
+            "PRE_PARENT_HIPIC_101", "PRE_PARENT_HIPIC_102","PRE_PARENT_HIPIC_104",
+            #Neuroticism
+            "PRE_PARENT_HIPIC_113", "PRE_PARENT_HIPIC_115","PRE_PARENT_HIPIC_117",
+            "PRE_PARENT_HIPIC_119", "PRE_PARENT_HIPIC_120",
+             #Openness
+            "PRE_PARENT_HIPIC_121", "PRE_PARENT_HIPIC_123","PRE_PARENT_HIPIC_139",
+            "PRE_PARENT_HIPIC_143")
+
+#Create dataframe with only variables that need to be recoded
+attach(hipic_data)
+table_r_vars<-subset(hipic_data,
+                     select = var_names) 
+detach(hipic_data)
+
+#Recode values and assign new recoded variable name
+for (i in 1:length(var_names)) {
+  nam<-paste(var_names[i],"_r", sep="")
+  assign(nam, recode_d(table_r_vars[i]))
+}
+
+# Combine Recoded variables into one dataframe
+recoded_table<-data.frame(PRE_PARENT_HIPIC_1_r, PRE_PARENT_HIPIC_3_r,PRE_PARENT_HIPIC_4_r,
+                     PRE_PARENT_HIPIC_11_r,PRE_PARENT_HIPIC_12_r, PRE_PARENT_HIPIC_29_r,
+                     #Agreeableness
+                     PRE_PARENT_HIPIC_34_r, PRE_PARENT_HIPIC_39_r,PRE_PARENT_HIPIC_45_r,
+                     PRE_PARENT_HIPIC_53_r,PRE_PARENT_HIPIC_55_r, PRE_PARENT_HIPIC_56_r,
+                     PRE_PARENT_HIPIC_57_r, PRE_PARENT_HIPIC_63_r,
+                     #Conscientiousness
+                     PRE_PARENT_HIPIC_80_r, PRE_PARENT_HIPIC_81_r,PRE_PARENT_HIPIC_83_r,
+                     PRE_PARENT_HIPIC_84_r,PRE_PARENT_HIPIC_85_r, PRE_PARENT_HIPIC_91_r,
+                     PRE_PARENT_HIPIC_94_r, PRE_PARENT_HIPIC_95_r,PRE_PARENT_HIPIC_96_r,
+                     PRE_PARENT_HIPIC_97_r,PRE_PARENT_HIPIC_98_r, PRE_PARENT_HIPIC_99_r,
+                     PRE_PARENT_HIPIC_101_r, PRE_PARENT_HIPIC_102_r,PRE_PARENT_HIPIC_104_r,
+                     #Neuroticism
+                     PRE_PARENT_HIPIC_113_r, PRE_PARENT_HIPIC_115_r, PRE_PARENT_HIPIC_117_r,
+                     PRE_PARENT_HIPIC_119_r, PRE_PARENT_HIPIC_120_r,
+                     #Openness
+                     PRE_PARENT_HIPIC_121_r, PRE_PARENT_HIPIC_123_r,PRE_PARENT_HIPIC_139_r,
+                     PRE_PARENT_HIPIC_143_r)
+
+#Update Column Variable Names
+colnames(recoded_table)<-c("PRE_PARENT_HIPIC_1_r", "PRE_PARENT_HIPIC_3_r","PRE_PARENT_HIPIC_4_r",
+                          "PRE_PARENT_HIPIC_11_r","PRE_PARENT_HIPIC_12_r", "PRE_PARENT_HIPIC_29_r",
+                          #Agreeableness
+                          "PRE_PARENT_HIPIC_34_r", "PRE_PARENT_HIPIC_39_r","PRE_PARENT_HIPIC_45_r",
+                          "PRE_PARENT_HIPIC_53_r","PRE_PARENT_HIPIC_55_r", "PRE_PARENT_HIPIC_56_r",
+                          "PRE_PARENT_HIPIC_57_r", "PRE_PARENT_HIPIC_63_r",
+                          #Conscientiousness
+                          "PRE_PARENT_HIPIC_80_r", "PRE_PARENT_HIPIC_81_r","PRE_PARENT_HIPIC_83_r",
+                          "PRE_PARENT_HIPIC_84_r","PRE_PARENT_HIPIC_85_r", "PRE_PARENT_HIPIC_91_r",
+                          "PRE_PARENT_HIPIC_94_r", "PRE_PARENT_HIPIC_95_r","PRE_PARENT_HIPIC_96_r",
+                          "PRE_PARENT_HIPIC_97_r","PRE_PARENT_HIPIC_98_r", "PRE_PARENT_HIPIC_99_r",
+                          "PRE_PARENT_HIPIC_101_r", "PRE_PARENT_HIPIC_102_r","PRE_PARENT_HIPIC_104_r",
+                          #Neuroticism
+                          "PRE_PARENT_HIPIC_113_r", "PRE_PARENT_HIPIC_115_r","PRE_PARENT_HIPIC_117_r",
+                          "PRE_PARENT_HIPIC_119_r", "PRE_PARENT_HIPIC_120_r",
+                          #Openness
+                          "PRE_PARENT_HIPIC_121_r", "PRE_PARENT_HIPIC_123_r","PRE_PARENT_HIPIC_139_r",
+                          "PRE_PARENT_HIPIC_143_r")
+
+
+#Append Recoded Variables into the hipic_data
+hipic_datav2<- data.frame(hipic_data, recoded_table)
+
+hipic_datav2<-subset(hipic_datav2,
+               select = -c(PRE_PARENT_HIPIC_1,
+                 PRE_PARENT_HIPIC_3,PRE_PARENT_HIPIC_4,
+                 PRE_PARENT_HIPIC_11,PRE_PARENT_HIPIC_12, PRE_PARENT_HIPIC_29,
+                 #Agreeableness
+                 PRE_PARENT_HIPIC_34, PRE_PARENT_HIPIC_39,PRE_PARENT_HIPIC_45,
+                 PRE_PARENT_HIPIC_53,PRE_PARENT_HIPIC_55, PRE_PARENT_HIPIC_56,
+                 PRE_PARENT_HIPIC_57, PRE_PARENT_HIPIC_63,
+                 #Conscientiousness
+                 PRE_PARENT_HIPIC_80, PRE_PARENT_HIPIC_81,PRE_PARENT_HIPIC_83,
+                 PRE_PARENT_HIPIC_84,PRE_PARENT_HIPIC_85, PRE_PARENT_HIPIC_91,
+                 PRE_PARENT_HIPIC_94, PRE_PARENT_HIPIC_95,PRE_PARENT_HIPIC_96,
+                 PRE_PARENT_HIPIC_97,PRE_PARENT_HIPIC_98, PRE_PARENT_HIPIC_99,
+                 PRE_PARENT_HIPIC_101,PRE_PARENT_HIPIC_102,PRE_PARENT_HIPIC_104,
+                 #Neuroticism
+                 PRE_PARENT_HIPIC_113, PRE_PARENT_HIPIC_115,PRE_PARENT_HIPIC_117,
+                 PRE_PARENT_HIPIC_119, PRE_PARENT_HIPIC_120,
+                 #Openness
+                 PRE_PARENT_HIPIC_121, PRE_PARENT_HIPIC_123,PRE_PARENT_HIPIC_139,
+                 PRE_PARENT_HIPIC_143))
+ 
+  
+
+#check<-data.frame(hipic_datav2$PRE_PARENT_HIPIC_1, hipic_datav2$PRE_PARENT_HIPIC_1_r)
+
+rm(list=setdiff(ls(), c("hipic_data", "hipic_datav2", "recode_d"))) 
+
+#########
+# Check alpha values
+#########
+
+#Original data
+cronbach.alpha(hipic_data, na.rm = TRUE)
+
+#Extraversion
+cronbach.alpha(hipic_data[1:32], na.rm = TRUE)
+
+#Agreeableness
+cronbach.alpha(hipic_data[33:72], na.rm = TRUE)
+
+#Conscientiousness
+cronbach.alpha(hipic_data[73:104], na.rm = TRUE)
+
+#Neuroticism
+cronbach.alpha(hipic_data[105:120], na.rm = TRUE)
+
+#Openess
+cronbach.alpha(hipic_data[121:144], na.rm = TRUE)
+
+
+#Recoded data - overall
+cronbach.alpha(hipic_datav2, na.rm = TRUE)
+#alpha value is 0.862
+
+#Recoded data - Extaversion
+
+grep("PRE_PARENT_HIPIC_2", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_32", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_1_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_29_r", names(hipic_datav2))
+
+#Create Extraversion Data subset
+
+ext_recode<-data.frame(hipic_datav2[1:26], hipic_datav2[107:112])
+
+#Run cronbach alpha
+cronbach.alpha(ext_recode,na.rm=TRUE)
+  
+#Recoded data - Agreeableness
+grep("PRE_PARENT_HIPIC_33", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_72", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_34_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_63_r", names(hipic_datav2))
+
+#Create agreeabless Data subset
+agr_recode<-data.frame(hipic_datav2[27:58], hipic_datav2[113:120])
+
+#Run cronbach alpha
+cronbach.alpha(agr_recode,na.rm=TRUE)
+
+#Recoded data - conscientiousness
+grep("PRE_PARENT_HIPIC_73", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_103", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_80_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_104_r", names(hipic_datav2))
+
+#Create conscientiousness Data subset
+con_recode<-data.frame(hipic_datav2[59:75], hipic_datav2[121:135])
+
+#Run cronbach alpha
+cronbach.alpha(con_recode,na.rm=TRUE)
+
+#Recoded data - Neuroticism
+grep("PRE_PARENT_HIPIC_105", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_118", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_113_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_120_r", names(hipic_datav2))
+
+#Create Neuroticism Data subset
+neu_recode<-data.frame(hipic_datav2[76:86], hipic_datav2[136:140])
+
+#Run cronbach alpha
+cronbach.alpha(neu_recode,na.rm=TRUE)
+
+#Recoded data - Openness
+grep("PRE_PARENT_HIPIC_122", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_144", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_121_r", names(hipic_datav2))
+grep("PRE_PARENT_HIPIC_143_r", names(hipic_datav2))
+
+#Create Neuroticism Data subset
+open_recode<-data.frame(hipic_datav2[87:106], hipic_datav2[141:144])
+
+#Run cronbach alpha
+cronbach.alpha(open_recode,na.rm=TRUE)
+
+
+################################
+#Correlation Matrices
+################################
+#Con
+con_cor<- polychoric(con_recode)
+
+rho.con <- con_cor$rho
+
+```
+
+## Background
+
+- Autism (ASD) a neurodevelopmental disorder that affects ~ 1% of the population (APA, 2013)
+- Children with autism may face challenges in responding effectively to
+emotional situations and everyday encounters
+
+- Studies found differences in personality traits between typically developing children and children with autism;Researchers found that typically developing children experienced higher levels of conscientiousness as compared to individuals with autism (Fortenberry et al., 2011).
+  - Individuals with ASD are thought to show numerous unique personality
+tendencies but that “surprisingly little research has examined these issues” (Scribner et al., 2014, p.1)
+
+## Study Purpose
+
+Goal of our exploratory study was to see whether the Hierarchical Personality Inventory for Children (HiPIC) questionnaire, which is normed on a general population, can be applied to children with Autism Spectrum Disorder (ASD).
+
+## Hypothesis & Research Question
+
+- The Big Five domains of personality exist within the autistic population but that the subdomains may differ since personality differences can affect individuals with ASD.
+- Which personality traits emerge within the Conscientiousness domain (i.e., one of the Big Five personality domains) from the HiPIC questionnaire for this sample of autistic children?
+
+## Data - Wood et al. (2019) Study 
+
+- 195 participants, 7-13 years of age (*M* = 9.98, *SD* = 1.81)
+- Recruited participants from 3 major US Universities through flyers, clinician referrals, and letters.
+- Eligibility criteria:
+  - IQ > 70
+  - An ASD clinical diagnosis by 2 clinicians
+  - Maladaptive and interfering anxiety
+  
+## Data - Wood et al. (2019) Study 
+
+|Demographics by Gender, Race, & Ethnicity| % | 
+|-----------------------------------------|---|
+|Female                                   |20 |
+|White                                    |76 |
+|Latinx                                   |22 |
+|Asian/Pacific Islander                   |8  |
+|African American                         |6  |
+|Multiracial                              |3  |
+|American Indian/Alaskan Native           |1  |
+
+## Hierarchical Personality Inventory for Children (HiPIC)
+
+- 144 item questionnaire completed by child's parent/caregiver 
+- Measure the Big Five personality domains 
+  - Extraversion, Agreeableness, Conscientiousness, Neuroticism, Openness
+  - 18 subdomains split within the Big Five domains
+- Instructed parents/caregivers to describe their child by their most frequent behaviors that occurred within the last year
+- 5-point Likert scale (*barely characteristic* to *highly characteristic*)
+- Focused on Conscientiousness
+  - 32 items, 4 subdomains (Achievement, Orderliness, Concentration, and Persistence)
+
+## Procedure
+
+- Observed and reversed HiPIC Conscientiousness items to ensure consistent direction
+- Confirmed with cronbach's $\alpha$ among cleaned conscientiousness items ($\alpha$ = 0.885)
+
+## Procedure - Parallel Analysis
+
+```{r echo=FALSE, results='hide'}
+fa.parallel(rho.con, n.obs=195, fm="ml", fa="fa")
+#Literature: 4 factors
+#Parallel Analysis: 7 factors
+#Eigenvalues above One: 4 factors
+```
+
+- Reveal 7 Factors, 4 factors with $\lambda>1$.
+
+
+## Procedure - EFA & CFA Analysis
+
+- Parallel analysis showed more factors than HiPIC was intended to measure
+- Proceed with EFA:
+  1. Conduct EFA and observe model fit indices
+  2. Remove items that did not fit and/or had loadings $<0.45$ in all factors
+  3. Repeat steps 1 & 2 until satisfactory model fit
+- Proceed with CFA
+  
+## EFA Results
+
+Table 1: EFA Model Results and Actions Taken
+
+|EFA Analysis| TLI | RMSEA | RMSR  |Action  Taken              |
+|------------|-----|-------|-------|---------------------------|
+|7-Factor v1 |.731 |.099   | .040  | Removed 9 items           |      
+|7-Factor v2 |.829 |.094   | .094  | Decide to run 6-Factor EFA|
+|6-Factor v1 |.804 |.101   | .030  | Removed 1 item            |
+|6-Factor v2 |.840 |.094   | .030  | Removed 1 item            |
+|6-Factor v3 |.830 |.094   | .030  | Decide to run 5-Factor EFA|
+|5-Factor    |.784 |.110   | .040  | Decide to run 4-Factor EFA|
+|4-Factor    |.716 |.121   | .050  | Decide to run 6-Factor CFA|
+
+## CFA Results
+
+- 5-factor and 4-factor EFAs indicated less promising fit compared to the 6-factor model
+- Ran a CFA for the 6-factor to determine fit of the conscientiousness items
+  - TLI = 0.827
+  - RMSEA = 0.098
+  - SRMR = 0.073 
+  - CFI = 0.856
+  
+## Discussion 
+
+- "If you’ve met one person with autism, then you’ve met one person with autism." - *Professor Stephen Shore* 
+- Great variation exists among individuals with ASD
+- Relates with our study of conscientiousness
+  - 4 factors in general population vs. 6 factors in our sample of children with ASD
+  - achievement, orderliness, concentration, persistence, *organization*, *withdrawing*
+
+## Limitations & Future Directions
+- None of our fit indices fell into the acceptable range
+  - Many were close; may have better fit with a larger sample
+- Redesign a personality measure specifically for those with autism
+- Include more items related to additional factors than suggested in prior
+research
+
+## References
+ 
+- American Psychological Association. (2013). *Diagnostic and Statistical Manual of Mental Disorders* (DSM-5). American Psychiatric Association: DC.
+- Fortenberry, C. L., Grist, C. L., & McCord, D. M. (2011). Personality trait differences between typically developing children and those diagnosed with autism spectrum disorder. *Individual Differences Research, 9,* 73-83.
+- Jeste, S. S., & Geschwind, D. H. (2014). Disentangling the heterogeneity of autism spectrum disorder through genetic findings. *Nature reviews. Neurology, 10*(2), 74–81. https://doi.org/10.1038/nrneurol.2013.278.
+- Mervielde, I., & De Fruyt, F. (1999). The construction of the hierarchical personality inventory for children (HiPIC). In I. Mervielde, I. Deary, F. De Fruyt, & F. Ostendorf (Eds.), *Personality Psychology* in Europe. Proceedings of the Eight European Conference on Personality Psychology (pp. 107-127). Tilburg: Tilburg University Press.
+
+## References
+- Schriber, R. A., Robins, R. W., & Solomon, M. (2014). Personality and self-insight in individuals with autism spectrum disorder. *Journal of personality and social psychology, 106*(1), 112.
+- Schwartzman, B. C., Wood, J. J., & Kapp, S. K. (2016). Can the Five Factor Model of Personality Account for the Variability of Autism Symptom Expression? Multivariate Approaches to Behavioral Phenotyping in Adult Autism Spectrum Disorder. *Journal of autism and developmental disorders, 46*(1), 253–272. https://doi.org/10.1007/s10803-015-2571-x.
+- Tackett, J. L., Kushner, S. C., De Fruyt, F., & Mervielde, I. (2013). Delineating personality traits in childhood and adolescence: Associations across measures, temperament, and behavioral problems. *Assessment*, 20(6), 738-751.
+
+## References
+- Wood, J.J., Kendall, P.C., Wood, K.S., Kerns, C.M., Seltzer, M., Small, B.J., Lewin, A.B., & Storch, E.A. (2019). Cognitive behavioral treatments for anxiety in children with autism spectrum disorder: A randomized clinical trial. *JAMA Psychiatry*. doi:10.1001/jamapsychiatry.2019.4160.  
