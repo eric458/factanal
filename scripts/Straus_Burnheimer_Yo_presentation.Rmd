@@ -1,5 +1,5 @@
 ---
-title: "Factor Structure of the Hierarchial Personality Inventory for Children (HiPIC) as it applies to Autistic Chidlren"
+title: "Factor Structure of the Hierarchical Personality Inventory for Children (HiPIC) as it applies to Autistic Children"
 author: "Straus, J., Burnheimer, E., Yo, J."
 date: "June 8, 2021"
 output: beamer_presentation
@@ -261,11 +261,11 @@ rho.con <- con_cor$rho
 
 ## Background
 
-- Autism (ASD) a neurodevelopmental disorder that affects ~ 1% of the population (APA, 2013)
+- Autism (ASD) is a neurodevelopmental disorder that affects ~ 1% of the population (APA, 2013)
 - Children with autism may face challenges in responding effectively to
 emotional situations and everyday encounters
 
-- Studies found differences in personality traits between typically developing children and children with autism;Researchers found that typically developing children experienced higher levels of conscientiousness as compared to individuals with autism (Fortenberry et al., 2011).
+- Studies found differences in personality traits between typically developing children and children with autism; Researchers found that typically developing children experienced higher levels of conscientiousness as compared to individuals with autism (Fortenberry et al., 2011).
   - Individuals with ASD are thought to show numerous unique personality
 tendencies but that “surprisingly little research has examined these issues” (Scribner et al., 2014, p.1)
 
@@ -281,13 +281,7 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
 ## Data - Wood et al. (2019) Study 
 
 - 195 participants, 7-13 years of age (*M* = 9.98, *SD* = 1.81)
-- Recruited participants from 3 major US Universities through flyers, clinician referrals, and letters.
-- Eligibility criteria:
-  - IQ > 70
-  - An ASD clinical diagnosis by 2 clinicians
-  - Maladaptive and interfering anxiety
-  
-## Data - Wood et al. (2019) Study 
+- Recruited participants from 3 major US Universities through fliers, clinician referrals, and letters.
 
 |Demographics by Gender, Race, & Ethnicity| % | 
 |-----------------------------------------|---|
@@ -302,7 +296,7 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
 ## Hierarchical Personality Inventory for Children (HiPIC)
 
 - 144 item questionnaire completed by child's parent/caregiver 
-- Measure the Big Five personality domains 
+- Measures the Big Five personality domains 
   - Extraversion, Agreeableness, Conscientiousness, Neuroticism, Openness
   - 18 subdomains split within the Big Five domains
 - Instructed parents/caregivers to describe their child by their most frequent behaviors that occurred within the last year
@@ -313,7 +307,13 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
 ## Procedure
 
 - Observed and reversed HiPIC Conscientiousness items to ensure consistent direction
-- Confirmed with cronbach's $\alpha$ among cleaned conscientiousness items ($\alpha$ = 0.885)
+- Confirmed with Cronbach's $\alpha$ among cleaned conscientiousness items ($\alpha$ = 0.885)
+
+- Examples of Items:
+  - goes to school against his/her will (RC)
+  - leaves everything lying around (RC)
+  - has a sense of order 
+  - makes a mess of things (RC)
 
 ## Procedure - Parallel Analysis
 
@@ -340,6 +340,7 @@ fa.parallel(rho.con, n.obs=195, fm="ml", fa="fa")
 
 Table 1: EFA Model Results and Actions Taken
 
+
 |EFA Analysis| TLI | RMSEA | RMSR  |Action  Taken              |
 |------------|-----|-------|-------|---------------------------|
 |7-Factor v1 |.731 |.099   | .040  | Removed 9 items           |      
@@ -350,15 +351,19 @@ Table 1: EFA Model Results and Actions Taken
 |5-Factor    |.784 |.110   | .040  | Decide to run 4-Factor EFA|
 |4-Factor    |.716 |.121   | .050  | Decide to run 6-Factor CFA|
 
+
+## EFA Results
+
+![](C:/Users/yjeff/Box/255C Final Project/Table 1.0.png){width=100%}
+
+
 ## CFA Results
 
-- 5-factor and 4-factor EFAs indicated less promising fit compared to the 6-factor model
-- Ran a CFA for the 6-factor to determine fit of the conscientiousness items
-  - TLI = 0.827
-  - RMSEA = 0.098
-  - SRMR = 0.073 
-  - CFI = 0.856
+![](C:/Users/yjeff/Box/255C Final Project/Table 2.0.png){width=100%}
+
+- TLI = 0.827; RMSEA = 0.098; SRMR = 0.073; CFI = 0.856
   
+
 ## Discussion 
 
 - "If you’ve met one person with autism, then you’ve met one person with autism." - *Professor Stephen Shore* 
