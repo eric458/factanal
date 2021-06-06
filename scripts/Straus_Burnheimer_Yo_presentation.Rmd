@@ -295,12 +295,12 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
 
 ## Hierarchical Personality Inventory for Children (HiPIC)
 
-- 144 item questionnaire completed by child's parent/caregiver 
+- 144 item questionnaire completed by child's parent/caregiver
+- Instructed parents/caregivers to describe their child by their most frequent behaviors that occurred within the last year
+- 5-point Likert scale (*barely characteristic* to *highly characteristic*)
 - Measures the Big Five personality domains 
   - Extraversion, Agreeableness, Conscientiousness, Neuroticism, Openness
   - 18 subdomains split within the Big Five domains
-- Instructed parents/caregivers to describe their child by their most frequent behaviors that occurred within the last year
-- 5-point Likert scale (*barely characteristic* to *highly characteristic*)
 - Focused on Conscientiousness
   - 32 items, 4 subdomains (Achievement, Orderliness, Concentration, and Persistence)
 
