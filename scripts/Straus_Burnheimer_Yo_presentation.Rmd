@@ -275,7 +275,6 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
 
 ## Hypothesis & Research Question
 
-- The Big Five domains of personality exist within the autistic population but that the subdomains may differ since personality differences can affect individuals with ASD.
 - Which personality traits emerge within the Conscientiousness domain (i.e., one of the Big Five personality domains) from the HiPIC questionnaire for this sample of autistic children?
 
 ## Data - Wood et al. (2019) Study 
@@ -296,8 +295,7 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
 ## Hierarchical Personality Inventory for Children (HiPIC)
 
 - 144 item questionnaire completed by child's parent/caregiver
-- Instructed parents/caregivers to describe their child by their most frequent behaviors that occurred within the last year
-- 5-point Likert scale (*barely characteristic* to *highly characteristic*)
+- Parents/caregivers describe their children's most frequent behaviors on a 5-point Likert scale (*barely characteristic* to *highly characteristic*)
 - Measures the Big Five personality domains 
   - Extraversion, Agreeableness, Conscientiousness, Neuroticism, Openness
   - 18 subdomains split within the Big Five domains
@@ -373,15 +371,12 @@ Table 1: EFA Model Results and Actions Taken
 
 ## Conclusions 
 
-- "If you’ve met one person with autism, then you’ve met one person with autism." - *Professor Stephen Shore* 
 - Great variation exists among individuals with ASD
 - Relates with our study of conscientiousness
   - 4 factors in general population vs. 6 factors in our sample of children with ASD
   - achievement, orderliness, concentration, persistence, *organization*, *withdrawing*
-
 - Redesign a personality measure specifically for those with autism
-- Include more items related to additional factors than suggested in prior
-research
+
 
 ## References
  
