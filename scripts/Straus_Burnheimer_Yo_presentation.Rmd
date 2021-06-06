@@ -355,16 +355,23 @@ Table 1: EFA Model Results and Actions Taken
 ## EFA Results
 
 ![](C:/Users/yjeff/Box/255C Final Project/Table 1.0.png){width=100%}
-
+- The SS loadings range from 1.43 to 4.06 and these six factors account for 63% of the variance.
 
 ## CFA Results
 
 ![](C:/Users/yjeff/Box/255C Final Project/Table 2.0.png){width=100%}
 
-- TLI = 0.827; RMSEA = 0.098; SRMR = 0.073; CFI = 0.856
-  
+## Fit Indices and Limitations
 
-## Discussion 
+|CFA Analysis   | TLI | CFI  | RMSEA |SRMR |
+|---------------|-----|------|-------|-----|
+|6-Factor model |.827 |.856  | .098  |.073 |      
+
+
+- Only the SRMR fell into the acceptable range
+  - Many were close; may have better fit with a larger sample
+
+## Conclusions 
 
 - "If you’ve met one person with autism, then you’ve met one person with autism." - *Professor Stephen Shore* 
 - Great variation exists among individuals with ASD
@@ -372,9 +379,6 @@ Table 1: EFA Model Results and Actions Taken
   - 4 factors in general population vs. 6 factors in our sample of children with ASD
   - achievement, orderliness, concentration, persistence, *organization*, *withdrawing*
 
-## Limitations & Future Directions
-- None of our fit indices fell into the acceptable range
-  - Many were close; may have better fit with a larger sample
 - Redesign a personality measure specifically for those with autism
 - Include more items related to additional factors than suggested in prior
 research
