@@ -5,7 +5,7 @@ date: "June 8, 2021"
 output: beamer_presentation
 ---
 
-```{r echo=FALSE, results='hide', message=FALSE, cache=TRUE}
+```{r echo=FALSE, results='hide', message=FALSE}
 
 ##############################
 ## libraries
@@ -299,7 +299,7 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
 - Measures the Big Five personality domains 
   - Extraversion, Agreeableness, Conscientiousness, Neuroticism, Openness
   - 18 subdomains split within the Big Five domains
-- Focused on Conscientiousness
+- We focused on Conscientiousness
   - 32 items, 4 subdomains (Achievement, Orderliness, Concentration, and Persistence)
 
 ## Procedure
@@ -308,8 +308,6 @@ Goal of our exploratory study was to see whether the Hierarchical Personality In
 - Confirmed with Cronbach's $\alpha$ among cleaned conscientiousness items ($\alpha$ = 0.885)
 
 - Examples of Items:
-  - goes to school against his/her will (RC)
-  - leaves everything lying around (RC)
   - has a sense of order 
   - makes a mess of things (RC)
 
