@@ -5,7 +5,7 @@ date: "June 8, 2021"
 output: beamer_presentation
 ---
 
-```{r echo=FALSE, results='hide', message=FALSE}
+```{r echo=FALSE, results='hide', message=FALSE, cache=TRUE}
 
 ##############################
 ## libraries
@@ -273,7 +273,7 @@ tendencies but that “surprisingly little research has examined these issues”
 
 Goal of our exploratory study was to see whether the Hierarchical Personality Inventory for Children (HiPIC) questionnaire, which is normed on a general population, can be applied to children with Autism Spectrum Disorder (ASD).
 
-## Hypothesis & Research Question
+## Research Question
 
 - Which personality traits emerge within the Conscientiousness domain (i.e., one of the Big Five personality domains) from the HiPIC questionnaire for this sample of autistic children?
 
