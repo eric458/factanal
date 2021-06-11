@@ -18,26 +18,13 @@ library(polycor)
 library(lavaan)
 library(ltm)
 
-##############################
-## directory paths
-##############################
-
-
 
 ##############################
 ## Read in Data
 ##############################
 
-#Read in the data - this is for Jeffrey
-hipic_data <- read_xlsx("C:/Users/yjeff/Box/255C Final Project/HiPIC raw data.xlsx")
-
-#this is for Jolie
-hipic_data <- read_xlsx("/Users/jolie/Documents/HiPIC raw data.xlsx")
-
-#this is for Eric
 hipic_data <- read_xlsx("HiPIC raw data.xlsx")
 
-#for all - run this to get rid of FamilyID
 hipic_data <- subset(hipic_data, select=-FAMILYID)
 
 ##############################
