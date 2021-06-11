@@ -49,7 +49,7 @@ recode_d<-function(item) {
 }
 
 # Recode Variables using Dr. Wood's SPSS syntax to identify the tables
-# See "itemslist" rmarkdown file
+# See "itemslist" rmarkdown file.
 
 # Create list of variables names that need to be recoded
 var_names<-c( #Extraversion
